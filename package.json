@@ -1,0 +1,31 @@
+{
+    "name": "hashdocket",
+    "version": "1.0.0",
+    "description": "A productivity software inspired by Slack and Monday.com",
+    "main": "server.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node server.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/ashwanth1109/HashDocket.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/ashwanth1109/HashDocket/issues"
+    },
+    "homepage": "https://github.com/ashwanth1109/HashDocket#readme",
+    "dependencies": {
+        "bcryptjs": "^2.4.3",
+        "body-parser": "^1.18.3",
+        "express": "^4.16.4",
+        "jsonwebtoken": "^8.4.0",
+        "mongoose": "^5.3.13",
+        "passport": "^0.4.0",
+        "passport-jwt": "^4.0.0",
+        "validator": "^10.9.0"
+    }
+}
