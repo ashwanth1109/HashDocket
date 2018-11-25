@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import logo from "../assets/hashdocket-logo.png";
+import logo from "../assets/hashdocket-logo2.png";
 
 const s = {
     image: "imgContain height60"

@@ -8,6 +8,9 @@
 .screenH {
     height: 100vh;
 }
+/* .screenHM80 {
+    height: calc(100vh - 80px); This doesnt work for some reason
+} */
 .fullW {
     width: 100%;
 }
@@ -106,6 +109,9 @@
 }
 .height120 {
     height: 120px;
+}
+.height150 {
+    height: 150px;
 }
 .height200 {
     height: 200px;

@@ -3,20 +3,20 @@ import Logo from "./Logo";
 import Spacer from "./Spacer";
 import arrowDown from "../assets/chevron-arrow-down.png";
 
-import uistore from "../store/uistore";
 import { connect } from "react-redux";
 
 const s = {
-    header: "screenW height80 relative",
-    staticHeader: "fullW fullH darkGray zIndex3 abs",
+    headerContainer: "screenW height80",
+    header: "screenW height80 relative fixed",
+    staticHeader: "fullW fullH black zIndex3 abs",
     dynamicHeader:
         "screenW height600 green abs transition1 zIndex2 flex column",
     dynamicHeaderBody: "flex1",
-    dynamicHeaderBorder: "fullW height10 darkGray",
+    dynamicHeaderBorder: "fullW height10 black",
     container: "width1000 fullH mAuto flex flex1 row jBetween aCenter",
     title: "fWhite fSize2 fWeight500",
     menuButtonOuter:
-        "width120 height120 abs darkGray bRad60 left0 right0 mAuto zIndex1 flex center transition1",
+        "width120 height120 abs black bRad60 left0 right0 mAuto zIndex1 flex center transition1",
     menuButtonInner:
         "width100 height100 green bRad50 flex column jEnd aCenter hoverGreenLight cPointer transition05",
     arrowImage: "width50 height40 imgContain transition1",
@@ -24,7 +24,6 @@ const s = {
 };
 
 const mapStateToProps = state => {
-    console.log(state.length === 0);
     if (state.length === 0) {
         return {
             headerOpen: false
@@ -53,23 +52,16 @@ class Header extends Component {
     }
 
     openHeader = () => {
-        console.log(`header should be opened`);
-        uistore.dispatch({
-            type: "TOGGLE_HEADER",
-            headerOpen: this.state.headerOpen
-        });
         this.props.toggleHeader(this.props.headerOpen);
     };
     render() {
         const { headerOpen } = this.props;
-        console.log(`Header state is ${headerOpen}`);
-        console.log(`Header type is ${typeof headerOpen}`);
         const headerPosition = headerOpen ? "-520px" : "0px";
         const arrowPosition = headerOpen ? "-575px" : "-55px";
         const arrowDirection = headerOpen ? "-180deg" : "0deg";
         const bgOverlayDarken = headerOpen ? "#00000066" : "";
         return (
-            <div>
+            <div className={s.headerContainer}>
                 <div className={s.header}>
                     <div
                         className={s.menuButtonOuter}

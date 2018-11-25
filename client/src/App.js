@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Header from "./components/Header";
+import IntroVideo from "./components/IntroVideo";
 import "./Custom.css";
 import { Provider } from "react-redux";
 import uistore from "./store/uistore";
@@ -31,7 +32,10 @@ class App extends Component {
         return (
             <div className={s.global}>
                 <Provider store={uistore}>
-                    <Header />
+                    <div>
+                        <Header />
+                        <IntroVideo />
+                    </div>
                 </Provider>
             </div>
         );
