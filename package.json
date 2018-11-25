@@ -7,8 +7,7 @@
         "yarn": "1.12.3"
     },
     "scripts": {
-        "start": "heroku local -f Procfile.dev",
-        "heroku-prebuild": "yarn --cwd backend start"
+        "start": "heroku local -f Procfile.dev"
     },
     "repository": "https://github.com/ashwanth1109/HashDocket.git",
     "author": "Ashwanth A R <ashwanth1109@gmail.com>",
