@@ -8,9 +8,8 @@
     },
     "scripts": {
         "dev": "heroku local -f Procfile.dev",
-        "build": "yarn --cwd frontend build",
-        "deploy": "cp -a frontend/build/. backend/public/",
-        "start": "yarn --cwd frontend install && yarn build && yarn deploy"
+        "start": "yarn --cwd backend install && yarn --cwd backend start",
+        "heroku-postbuild": "yarn --cwd frontend install && yarn --cwd frontend build"
     },
     "repository": "https://github.com/ashwanth1109/HashDocket.git",
     "author": "Ashwanth A R <ashwanth1109@gmail.com>",
