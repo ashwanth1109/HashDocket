@@ -39,7 +39,11 @@ app.use(passport.initialize()); // Passport middleware for protected routes
 // ANY API ROUTE WILL BE CAUGHT FIRST TO RENDER JSON
 // ALL OTHER ROUTES WILL REDIRECT TO FRONTEND INDEX PAGE
 //===========================================
-app.get("/api", (req, res) => res.json({ message: "Hello React" }));
+const usersController = require("./routes/users");
+app.get("/api", (req, res) =>
+    res.json({ message: "Hello React. Express is set up properly" })
+);
+app.use("/api/users", usersController);
 
 //===========================================
 // CATCH ALL FOR ANY ROUTE THAT DOESNT EXIST
