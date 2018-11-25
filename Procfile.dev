@@ -1,0 +1,2 @@
+backend: PORT=3001 yarn --cwd backend server
+frontend: PORT=3000 yarn --cwd frontend start
