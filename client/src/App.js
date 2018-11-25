@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import logo from "./logo.svg";
-import "./App.css";
+import Header from "./components/Header";
 
 class App extends Component {
     constructor(props) {
@@ -17,17 +16,14 @@ class App extends Component {
     getTestData = () => {
         fetch("/api")
             .then(res => res.json())
-            .then(data => this.setState({ data: data }))
+            .then(data => console.log(data))
             .catch(err => console.log(err));
     };
 
     render() {
         return (
-            <div className="App">
-                <header className="App-header">
-                    <img src={logo} className="App-logo" alt="logo" />
-                    <p>{this.state.data ? this.state.data.message : ""}</p>
-                </header>
+            <div>
+                <Header />
             </div>
         );
     }
