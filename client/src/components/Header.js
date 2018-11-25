@@ -4,6 +4,7 @@ import Spacer from "./Spacer";
 import arrowDown from "../assets/chevron-arrow-down.png";
 
 import uistore from "../store/uistore";
+import { connect } from "react-redux";
 
 const s = {
     header: "screenW height80 relative",
@@ -11,7 +12,7 @@ const s = {
     dynamicHeader:
         "screenW height600 green abs transition1 zIndex2 flex column",
     dynamicHeaderBody: "flex1",
-    dynamicHeaderBorder: "fullW height20 darkGray",
+    dynamicHeaderBorder: "fullW height10 darkGray",
     container: "width1000 fullH mAuto flex flex1 row jBetween aCenter",
     title: "fWhite fSize2 fWeight500",
     menuButtonOuter:
@@ -22,20 +23,33 @@ const s = {
     bgOverlayDarken: "abs screenW screenH transition1"
 };
 
-export default class Header extends Component {
+const mapStateToProps = state => {
+    console.log(state.length === 0);
+    if (state.length === 0) {
+        return {
+            headerOpen: false
+        };
+    } else {
+        return {
+            headerOpen: state
+        };
+    }
+};
+
+const mapDispatchToProps = dispatch => {
+    return {
+        toggleHeader: function(headerOpen) {
+            dispatch({ type: "TOGGLE_HEADER", headerOpen: headerOpen });
+        }
+    };
+};
+
+class Header extends Component {
     constructor(props) {
         super(props);
         this.state = {
             headerOpen: false
         };
-    }
-
-    componentDidMount() {
-        uistore.subscribe(() => {
-            this.setState({
-                headerOpen: uistore.getState()
-            });
-        });
     }
 
     openHeader = () => {
@@ -44,9 +58,10 @@ export default class Header extends Component {
             type: "TOGGLE_HEADER",
             headerOpen: this.state.headerOpen
         });
+        this.props.toggleHeader(this.props.headerOpen);
     };
     render() {
-        const { headerOpen } = this.state;
+        const { headerOpen } = this.props;
         console.log(`Header state is ${headerOpen}`);
         console.log(`Header type is ${typeof headerOpen}`);
         const headerPosition = headerOpen ? "-520px" : "0px";
@@ -99,3 +114,10 @@ export default class Header extends Component {
         );
     }
 }
+
+const ConnectedComponent = connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(Header);
+
+export default ConnectedComponent;

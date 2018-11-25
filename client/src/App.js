@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import Header from "./components/Header";
 import "./Custom.css";
+import { Provider } from "react-redux";
+import uistore from "./store/uistore";
 
 const s = {
     global: "fQuicksand"
@@ -28,7 +30,9 @@ class App extends Component {
     render() {
         return (
             <div className={s.global}>
-                <Header />
+                <Provider store={uistore}>
+                    <Header />
+                </Provider>
             </div>
         );
     }
