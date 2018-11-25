@@ -1,1 +1,1 @@
-web: yarn --cwd backend start
+web: yarn --cwd frontend install && yarn --cwd frontend build && yarn --cwd start
