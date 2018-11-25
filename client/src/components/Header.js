@@ -3,7 +3,7 @@ import Logo from "./Logo";
 import Spacer from "./Spacer";
 import arrowDown from "../assets/chevron-arrow-down.png";
 
-// import uistore from "../store/uistore";
+import uistore from "../store/uistore";
 
 const s = {
     header: "screenW height80 relative",
@@ -31,19 +31,19 @@ export default class Header extends Component {
     }
 
     componentDidMount() {
-        // uistore.subscribe(() => {
-        //     this.setState({
-        //         headerOpen: uistore.getState()
-        //     });
-        // });
+        uistore.subscribe(() => {
+            this.setState({
+                headerOpen: uistore.getState()
+            });
+        });
     }
 
     openHeader = () => {
         console.log(`header should be opened`);
-        // uistore.dispatch({
-        //     type: "TOGGLE_HEADER",
-        //     headerOpen: this.state.headerOpen
-        // });
+        uistore.dispatch({
+            type: "TOGGLE_HEADER",
+            headerOpen: this.state.headerOpen
+        });
     };
     render() {
         const { headerOpen } = this.state;
