@@ -1,46 +1,15 @@
 {
     "name": "hashdocket",
     "version": "1.0.0",
-    "description": "",
+    "main": "index.js",
     "engines": {
         "node": "8.12.0",
         "yarn": "1.12.3"
     },
     "scripts": {
-<<<<<<< HEAD
-        "start": "heroku local -f Procfile.dev",
-        "build": "yarn --cwd frontend install && yarn --cwd frontend build",
-        "deploy": "cp -a frontend/build/. backend/public/",
-        "heroku-postbuild": "yarn build && yarn deploy"
-=======
-        "test": "echo \"Error: no test specified\" && exit 1",
-        "start": "node server.js",
-        "server": "nodemon server.js"
->>>>>>> 3a825a64361ea5c990af90135e8190e0bdfbf273
+        "start": "heroku local -f Procfile.dev"
     },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/ashwanth1109/HashDocket.git"
-    },
-    "keywords": [],
-    "author": "",
-    "license": "ISC",
-    "bugs": {
-        "url": "https://github.com/ashwanth1109/HashDocket/issues"
-    },
-<<<<<<< HEAD
-    "homepage": "https://github.com/ashwanth1109/HashDocket#readme"
-=======
-    "homepage": "https://github.com/ashwanth1109/HashDocket#readme",
-    "dependencies": {
-        "bcryptjs": "^2.4.3",
-        "dotenv": "^6.1.0",
-        "express": "^4.16.4",
-        "jsonwebtoken": "^8.4.0",
-        "mongoose": "^5.3.13",
-        "passport": "^0.4.0",
-        "passport-jwt": "^4.0.0",
-        "validator": "^10.9.0"
-    }
->>>>>>> 3a825a64361ea5c990af90135e8190e0bdfbf273
+    "repository": "https://github.com/ashwanth1109/HashDocket.git",
+    "author": "Ashwanth A R <ashwanth1109@gmail.com>",
+    "license": "MIT"
 }
