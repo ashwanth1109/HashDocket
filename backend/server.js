@@ -14,7 +14,7 @@ app.get("/api", (req, res) => res.json({ message: "Hello React" }));
 // SEND IT TO REACT'S INDEX PAGE
 //===========================================
 app.get("*", (req, res) =>
-    res.sendFile(path.join(__dirname + "frontend/build/index.html"))
+    res.sendFile(path.join(__dirname + "/../frontend/build/index.html"))
 );
 
 app.listen(PORT, () => console.log(`listening on port ${PORT}`));
