@@ -11,8 +11,8 @@ const s = {
     menuButtonOuter:
         "width120 height120 abs darkGray bRad60 botM55 left0 right0 mAuto zIndex1 flex center",
     menuButtonInner:
-        "width100 height100 green bRad50 flex aEnd jCenter row hoverGreenLight cPointer",
-    arrowImage: "width70 height50 imgContain"
+        "width100 height100 green bRad50 flex aEnd jCenter row hoverGreenLight cPointer transition05",
+    arrowImage: "width70 height50 imgContain transition1"
 };
 
 export default class Header extends Component {
