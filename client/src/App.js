@@ -1,5 +1,10 @@
 import React, { Component } from "react";
 import Header from "./components/Header";
+import "./Custom.css";
+
+const s = {
+    global: "fQuicksand"
+};
 
 class App extends Component {
     constructor(props) {
@@ -22,7 +27,7 @@ class App extends Component {
 
     render() {
         return (
-            <div>
+            <div className={s.global}>
                 <Header />
             </div>
         );

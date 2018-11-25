@@ -1,28 +1,43 @@
 import React, { Component } from "react";
-import { w, h, bg } from "../Styles";
+import Logo from "./Logo";
+import arrowDown from "../assets/chevron-arrow-down.png";
 
-const stylizer = obj => {
-    let retObject = {};
-    for (const prop in obj) {
-        if (obj.hasOwnProperty(prop)) {
-            let tempObj = {};
-            const arr = obj[prop];
-            arr.forEach(element => {
-                tempObj = Object.assign(tempObj, element);
-            });
-            retObject[prop] = tempObj;
-        }
-    }
-    console.log(retObject);
-    return retObject;
+const s = {
+    header: "screenW height80 relative",
+    staticHeader: "fullW fullH darkGray zIndex2 abs",
+    dynamicHeader: "",
+    container: "width1000 fullH mAuto flex flex1 row jBetween aCenter",
+    title: "fWhite fSize2 fWeight500",
+    menuButtonOuter:
+        "width120 height120 abs darkGray bRad60 botM55 left0 right0 mAuto zIndex1 flex center",
+    menuButtonInner:
+        "width100 height100 green bRad50 flex aEnd jCenter row hoverGreenLight cPointer",
+    arrowImage: "width70 height50 imgContain"
 };
-
-const s = stylizer({
-    container: [w.screen, h.h80, bg.darkGrey]
-});
 
 export default class Header extends Component {
     render() {
-        return <div style={s.container}>Header</div>;
+        return (
+            <div className={s.header}>
+                <div className={s.menuButtonOuter}>
+                    <div className={s.menuButtonInner}>
+                        <img
+                            alt="down arrow"
+                            src={arrowDown}
+                            className={s.arrowImage}
+                        />
+                    </div>
+                </div>
+                <div className={s.staticHeader}>
+                    <div className={s.container}>
+                        <Logo />
+                        <div className={s.title}>HASH-DOCKET</div>
+                    </div>
+                </div>
+                <div className={s.dynamicHeader}>
+                    <div />
+                </div>
+            </div>
+        );
     }
 }

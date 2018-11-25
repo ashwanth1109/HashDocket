@@ -1,0 +1,378 @@
+/*====== IMPORT STATEMENTS ======*/
+@import url("https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700");
+
+/*====== WIDTH & HEIGHT: GENERAL ======*/
+.screenW {
+    width: 100vw;
+}
+.screenH {
+    height: 100vh;
+}
+.fullW {
+    width: 100%;
+}
+.fullH {
+    height: 100%;
+}
+
+/*====== WIDTH: PERCENTAGE ======*/
+.widthP80 {
+    width: 80%;
+}
+
+/*====== WIDTH: SPECIFIC ======*/
+.width10 {
+    width: 10px;
+}
+.width20 {
+    width: 20px;
+}
+.width50 {
+    width: 50px;
+}
+.width80 {
+    width: 80px;
+}
+.width100 {
+    width: 100px;
+}
+.width120 {
+    width: 120px;
+}
+.width150 {
+    width: 150px;
+}
+.width200 {
+    width: 200px;
+}
+.width300 {
+    width: 300px;
+}
+.width400 {
+    width: 400px;
+}
+.width420 {
+    width: 420px;
+}
+.width450 {
+    width: 450px;
+}
+.width500 {
+    width: 500px;
+}
+.width600 {
+    width: 600px;
+}
+.width700 {
+    width: 700px;
+}
+.width800 {
+    width: 800px;
+}
+.width900 {
+    width: 900px;
+}
+.width1000 {
+    width: 1000px;
+}
+
+/*====== HEIGHT: SPECIFIC ======*/
+.height10 {
+    height: 10px;
+}
+.height20 {
+    height: 20px;
+}
+.height40 {
+    height: 40px;
+}
+.height50 {
+    height: 50px;
+}
+.height60 {
+    height: 60px;
+}
+.height70 {
+    height: 70px;
+}
+.height80 {
+    height: 80px;
+}
+.height100 {
+    height: 100px;
+}
+.height120 {
+    height: 120px;
+}
+.height200 {
+    height: 200px;
+}
+.height245 {
+    height: 245px;
+}
+.height300 {
+    height: 300px;
+}
+.height350 {
+    height: 350px;
+}
+.height400 {
+    height: 400px;
+}
+.height600 {
+    height: 600px;
+}
+
+/*====== FLEX ======*/
+.flex {
+    display: flex;
+}
+.row {
+    flex-direction: row;
+}
+.column {
+    flex-direction: column;
+}
+.wrap {
+    flex-wrap: wrap;
+}
+.flex1 {
+    flex: 1;
+}
+.flex2 {
+    flex: 2;
+}
+.flex3 {
+    flex: 3;
+}
+.flex5 {
+    flex: 5;
+}
+
+/*====== FONT ======*/
+.fSize1 {
+    font-size: 1rem;
+}
+.fSize12 {
+    font-size: 1.2rem;
+}
+.fSize15 {
+    font-size: 1.5rem;
+}
+.fSize2 {
+    font-size: 2rem;
+}
+.fSize3 {
+    font-size: 3rem;
+}
+.fSize4 {
+    font-size: 4rem;
+}
+.fSize5 {
+    font-size: 5rem;
+}
+.fWeight300 {
+    font-weight: 300;
+}
+.fWeight400 {
+    font-weight: 400;
+}
+.fWeight500 {
+    font-weight: 500;
+}
+.fWeight700 {
+    font-weight: 700;
+}
+.fQuicksand {
+    font-family: "Quicksand", sans-serif;
+}
+.fWhite {
+    color: #fff;
+}
+.fPink {
+    color: #ff3697;
+}
+.tAlignCenter {
+    text-align: center;
+}
+
+/*====== TEXT DECORATION CLASSES ======*/
+.underline {
+    text-decoration: underline;
+}
+
+/*====== BACKGROUND COLOR ======*/
+.black {
+    background-color: #000;
+}
+.blue {
+    background-color: #08a7d0;
+}
+.gray {
+    background-color: #333333;
+}
+.pink {
+    background-color: #ff3697;
+}
+.white {
+    background-color: #fff;
+}
+.whiteO50 {
+    background-color: #ffffff40;
+}
+.gray1 {
+    background-color: slategray;
+}
+.gray2 {
+    background-color: #333;
+}
+.darkGray {
+    background-color: #575a5e;
+}
+.green {
+    background-color: #35e484;
+}
+
+/*====== BACKGROUND COLOR OPACITY ======*/
+.blackO40 {
+    background-color: #00000066;
+}
+.blackO70 {
+    background-color: #000000b3;
+}
+
+/*====== ALIGNMENT ======*/
+.center {
+    justify-content: center;
+    align-items: center;
+}
+.jCenter {
+    justify-content: center;
+}
+.aCenter {
+    align-items: center;
+}
+.jStart {
+    justify-content: flex-start;
+}
+.aStart {
+    align-items: flex-start;
+}
+.jEnd {
+    justify-content: flex-end;
+}
+.aEnd {
+    align-items: flex-end;
+}
+.jBetween {
+    justify-content: space-between;
+}
+.jEvenly {
+    justify-content: space-evenly;
+}
+.jAround {
+    justify-content: space-around;
+}
+
+/*====== MARGIN ======*/
+.mAuto {
+    margin: auto;
+}
+
+/*====== PADDING: ALL SIDES ======*/
+.pad10 {
+    padding: 10px;
+}
+
+/*====== BOX SIZING ======*/
+.borderBox {
+    box-sizing: border-box;
+}
+
+/*====== ABSOLUTE ======*/
+.abs {
+    position: absolute;
+}
+.fixed {
+    position: fixed;
+}
+.relative {
+    position: relative;
+}
+.oHidden {
+    overflow: hidden;
+}
+
+/*====== TOP, BOT, LEFT, RIGHT VALUES ======*/
+.botM55 {
+    bottom: -55px;
+}
+.left0 {
+    left: 0px;
+}
+.right0 {
+    right: 0px;
+}
+
+/*====== Z INDEX ======*/
+.zIndex1 {
+    z-index: 1;
+}
+.zIndex2 {
+    z-index: 2;
+}
+.zIndex3 {
+    z-index: 3;
+}
+
+/*====== IMAGE ======*/
+.imgCover {
+    object-fit: cover;
+}
+.imgContain {
+    object-fit: contain;
+}
+
+/*====== BORDER ======*/
+.bRad5 {
+    border-radius: 5px;
+}
+.bRad10 {
+    border-radius: 10px;
+}
+.bRad25 {
+    border-radius: 25px;
+}
+.bRad50 {
+    border-radius: 50px;
+}
+.bRad60 {
+    border-radius: 60px;
+}
+.bRad100 {
+    border-radius: 100%;
+}
+.bPink {
+    border: 2px solid #ff3697;
+}
+.bGray10 {
+    border: 10px solid #575a5e;
+}
+.bPinkFocus:focus {
+    border: 2px solid #ff3697;
+}
+
+/*====== CLICK RELATED ======*/
+.cPointer {
+    cursor: pointer;
+}
+
+/*====== HOVER CLASSES ======*/
+.hoverGreenLight:hover {
+    background-color: #3cfe94;
+}
+
+/*====== FOCUS CLASSES ======*/
+.focusPink:focus {
+    border-color: #ff3697;
+}
