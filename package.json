@@ -9,7 +9,7 @@
     "scripts": {
         "dev": "heroku local -f Procfile.dev",
         "start": "yarn && yarn server",
-        "heroku-postbuild": "yarn --cwd client install && yarn --cwd client build",
+        "heroku-postbuild": "yarn --cwd client && yarn --cwd client build",
         "server": "node server.js",
         "devserver": "nodemon server.js"
     },
