@@ -1,1 +1,1 @@
-backend: yarn --cwd backend start
+web: yarn --cwd backend start
