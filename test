@@ -1,4 +1,0 @@
-,
-        "build": "yarn --cwd frontend install && yarn --cwd frontend build",
-        "deploy": "cp -a frontend/build/. backend/public/",
-        "heroku-postbuild": "yarn build && yarn deploy"
