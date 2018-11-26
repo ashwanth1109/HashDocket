@@ -48,6 +48,9 @@
 .width200 {
     width: 200px;
 }
+.width220 {
+    width: 220px;
+}
 .width300 {
     width: 300px;
 }
@@ -201,6 +204,9 @@
 .fPink {
     color: #ff3697;
 }
+.fGreen {
+    color: #35e484;
+}
 .tAlignCenter {
     text-align: center;
 }
@@ -228,6 +234,9 @@
 }
 .whiteO50 {
     background-color: #ffffff40;
+}
+.cream {
+    background-color: #c1dbb3;
 }
 .gray1 {
     background-color: slategray;

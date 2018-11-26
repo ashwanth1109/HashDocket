@@ -3,7 +3,8 @@ import Header from "./components/Header";
 import IntroVideo from "./components/IntroVideo";
 import "./Custom.css";
 import { Provider } from "react-redux";
-import uistore from "./store/uistore";
+import store from "./store/store";
+import WordSwapTitle from "./components/WordSwapTitle";
 
 const s = {
     global: "fQuicksand"
@@ -31,10 +32,11 @@ class App extends Component {
     render() {
         return (
             <div className={s.global}>
-                <Provider store={uistore}>
+                <Provider store={store}>
                     <div>
                         <Header />
                         <IntroVideo />
+                        <WordSwapTitle />
                     </div>
                 </Provider>
             </div>

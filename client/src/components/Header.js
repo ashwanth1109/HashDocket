@@ -6,11 +6,11 @@ import arrowDown from "../assets/chevron-arrow-down.png";
 import { connect } from "react-redux";
 
 const s = {
-    headerContainer: "screenW height80",
-    header: "screenW height80 relative fixed",
+    headerContainer: "screenW height80 fixed zIndex1",
+    header: "screenW height80 relative",
     staticHeader: "fullW fullH black zIndex3 abs",
     dynamicHeader:
-        "screenW height600 green abs transition1 zIndex2 flex column",
+        "screenW height600 cream abs transition1 zIndex2 flex column",
     dynamicHeaderBody: "flex1",
     dynamicHeaderBorder: "fullW height10 black",
     container: "width1000 fullH mAuto flex flex1 row jBetween aCenter",
@@ -44,13 +44,6 @@ const mapDispatchToProps = dispatch => {
 };
 
 class Header extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            headerOpen: false
-        };
-    }
-
     openHeader = () => {
         this.props.toggleHeader(this.props.headerOpen);
     };
