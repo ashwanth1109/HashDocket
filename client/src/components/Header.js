@@ -6,17 +6,17 @@ import arrowDown from "../assets/chevron-arrow-down.png";
 import { connect } from "react-redux";
 
 const s = {
-    headerContainer: "screenW height80 fixed zIndex1",
+    headerContainer: "screenW height80 fixed zIndex5",
     header: "screenW height80 relative",
-    staticHeader: "fullW fullH black zIndex3 abs",
+    staticHeader: "fullW fullH black zIndex7 abs",
     dynamicHeader:
-        "screenW height600 cream abs transition1 zIndex2 flex column",
+        "screenW height600 cream abs transition1 zIndex6 flex column",
     dynamicHeaderBody: "flex1",
     dynamicHeaderBorder: "fullW height10 black",
     container: "width1000 fullH mAuto flex flex1 row jBetween aCenter",
     title: "fWhite fSize2 fWeight500",
     menuButtonOuter:
-        "width120 height120 abs black bRad60 left0 right0 mAuto zIndex1 flex center transition1",
+        "width120 height120 abs black bRad60 left0 right0 mAuto zIndex5 flex center transition1",
     menuButtonInner:
         "width100 height100 green bRad50 flex column jEnd aCenter hoverGreenLight cPointer transition05",
     arrowImage: "width50 height40 imgContain transition1",
@@ -30,7 +30,7 @@ const mapStateToProps = state => {
         };
     } else {
         return {
-            headerOpen: state
+            headerOpen: state.headerOpen
         };
     }
 };
@@ -44,8 +44,8 @@ const mapDispatchToProps = dispatch => {
 };
 
 class Header extends Component {
-    openHeader = () => {
-        this.props.toggleHeader(this.props.headerOpen);
+    toggleHeader = () => {
+        this.props.toggleHeader(!this.props.headerOpen);
     };
     render() {
         const { headerOpen } = this.props;
@@ -62,7 +62,7 @@ class Header extends Component {
                     >
                         <div
                             className={s.menuButtonInner}
-                            onClick={() => this.openHeader()}
+                            onClick={() => this.toggleHeader()}
                         >
                             <img
                                 alt="down arrow"

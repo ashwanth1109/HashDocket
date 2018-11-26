@@ -19,7 +19,7 @@ class App extends Component {
     }
 
     componentDidMount() {
-        this.getTestData();
+        // this.getTestData();
     }
 
     getTestData = () => {

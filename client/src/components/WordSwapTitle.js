@@ -1,38 +1,107 @@
 import React, { Component } from "react";
 import Spacer from "./Spacer";
 
-import { connect } from "react-redux";
-
 const s = {
-    container: "width1000 mAuto blue height400 flex center column",
-    title: "fSize3 fWeight500 fullW height80 flex row aCenter",
-    blank: "fullW height80 whiteO50",
+    container: "width1000 mAuto height400 flex center column",
+    title: "fSize3 fWeight500 fullW height80 flex row aCenter zIndex1",
+    blank: "fullW height80 blackO70 zIndex2",
     flex: "flex1",
-    wordSwap: "width220 height80 relative"
+    wordSwap: "width220 height80 relative",
+    word: "abs width220 height80 flex aCenter"
 };
 
-const mapStateToProps = state => {
-    return {
-        currentWord: state
-    };
-};
-
-const mapDispatchToProps = dispatch => {
-    return {
-        wordSwap: function(currentWord) {
-            dispatch({
-                type: "WORD_SWAP",
-                currentWord: currentWord
-            });
-        }
-    };
-};
+const words = ["Plan", "Organize", "Track"];
 
 class WordSwapTitle extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            currentWord: {
+                index: 0,
+                position: "0px",
+                transition: "1s ease-in-out"
+            },
+            nextWord: {
+                index: 1,
+                position: "80px",
+                transition: "1s ease-in-out"
+            }
+        };
+    }
+
+    componentDidMount() {
+        this.transitionWord();
+    }
+
+    //===========================================
+    // Transitions the words every 2 seconds
+    //===========================================
+    transitionWord = () => {
+        setInterval(() => {
+            const { currentWord, nextWord } = this.state;
+            this.transition1();
+            this.setState({
+                currentWord: currentWord,
+                nextWord: nextWord
+            });
+            this.transition2();
+            setTimeout(() => {
+                if (nextWord["position"] === "0px") {
+                    this.setState({
+                        currentWord: currentWord
+                    });
+                } else {
+                    this.setState({
+                        nextWord: nextWord
+                    });
+                }
+                this.wordSwap();
+            }, 1000);
+        }, 2000);
+    };
+    //===========================================
+    // Move word in view out of view and bring new word in
+    //===========================================
+    transition1 = () => {
+        const { currentWord, nextWord } = this.state;
+        if (currentWord.position === "0px") {
+            currentWord["position"] = "-80px";
+            nextWord["position"] = "0px";
+        } else {
+            currentWord["position"] = "0px";
+            nextWord["position"] = "-80px";
+        }
+    };
+    //===========================================
+    // Move the word that just went out of view back to the top
+    //===========================================
+    transition2 = () => {
+        const { currentWord, nextWord } = this.state;
+        if (currentWord.position === "-80px") {
+            currentWord["transition"] = "";
+            currentWord["position"] = "80px";
+        } else {
+            nextWord["transition"] = "";
+            nextWord["position"] = "80px";
+        }
+    };
+    //===========================================
+    // Change the index of the word that is out of view and add transition back
+    //===========================================
     wordSwap = () => {
-        this.props.wordSwap(this.props.currentWord);
+        const { currentWord, nextWord } = this.state;
+        if (nextWord.position === "0px") {
+            currentWord["index"] =
+                nextWord.index === 2 ? 0 : nextWord.index + 1;
+            currentWord["transition"] = "1s ease-in-out";
+        } else {
+            nextWord["index"] =
+                currentWord.index === 2 ? 0 : currentWord.index + 1;
+            nextWord["transition"] = "1s ease-in-out";
+        }
     };
     render() {
+        const { currentWord, nextWord } = this.state;
         return (
             <div className={s.container}>
                 <div className={s.blank} />
@@ -42,16 +111,22 @@ class WordSwapTitle extends Component {
                     <Spacer w={10} />
                     <div className={s.wordSwap}>
                         <div
-                            className="abs width220 height80 flex aCenter pink"
-                            style={{ bottom: "80px" }}
+                            className={s.word}
+                            style={{
+                                bottom: nextWord.position,
+                                transition: nextWord.transition
+                            }}
                         >
-                            Plan.
+                            {words[nextWord.index]}
                         </div>
                         <div
-                            className="abs width220 height80 flex aCenter pink"
-                            style={{ bottom: "0px" }}
+                            className={s.word}
+                            style={{
+                                bottom: currentWord.position,
+                                transition: currentWord.transition
+                            }}
                         >
-                            Organize.
+                            {words[currentWord.index]}
                         </div>
                     </div>
                     <div className={s.flex} />
@@ -62,9 +137,47 @@ class WordSwapTitle extends Component {
     }
 }
 
-const ConnectedComponent = connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(WordSwapTitle);
+export default WordSwapTitle;
 
-export default ConnectedComponent;
+//===========================================
+// CODE GRAVEYARD
+//===========================================
+// import { connect } from "react-redux";
+
+// const mapStateToProps = state => {
+//     console.log(`state is:`);
+//     console.log(state);
+//     if (state.currentWord === undefined) {
+//         console.log(`currentWord was returned as 0`);
+//         return {
+//             currentWord: 0
+//         };
+//     } else {
+//         return {
+//             currentWord: state.currentWord
+//         };
+//     }
+// };
+
+// const mapDispatchToProps = dispatch => {
+//     return {
+//         wordSwap: function(currentWord, arrLength) {
+//             console.log(`current word is ${currentWord}`);
+//             if (currentWord === arrLength - 1) {
+//                 currentWord = 0;
+//             } else {
+//                 currentWord++;
+//             }
+//             console.log(currentWord);
+//             dispatch({
+//                 type: "WORD_SWAP",
+//                 currentWord: currentWord
+//             });
+//         }
+//     };
+// };
+
+// const ConnectedComponent = connect(
+//     mapStateToProps,
+//     mapDispatchToProps
+// )(WordSwapTitle);
