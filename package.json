@@ -17,6 +17,7 @@
     "author": "Ashwanth A R <ashwanth1109@gmail.com>",
     "license": "MIT",
     "dependencies": {
+        "bcryptjs": "^2.4.3",
         "dotenv": "^6.1.0",
         "express": "^4.16.4",
         "express-session": "^1.15.6",

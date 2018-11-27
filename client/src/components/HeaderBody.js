@@ -11,9 +11,10 @@ const s = {
     form: "flex1 center width600 mAuto flex column jEvenly",
     input: "fullW height50 bGray5 bOrangeFocus5 bRad10 noOutline pad10 fSize2",
     button:
-        "fullW height70 flex center green hoverGreenD cPointer fSize2 fWeight500 transition05",
+        "fullW height70 flex center green hoverGreenD cPointer fSize2 hoverFSize21 fWeight500 transition05",
     socialTabContainer: "fullW height70 flex row",
-    socialTab: "flex1 flex center fSize15 fWhite transition05 cPointer"
+    socialTab:
+        "flex1 flex center fSize15 fWhite transition05 cPointer hoverFSize16"
 };
 
 class HeaderBody extends Component {

@@ -4,8 +4,9 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const path = require("path");
-const app = express();
+const session = require("express-session");
 require("dotenv").config();
+const app = express();
 
 //===========================================
 // PORT & MONGODB URI
@@ -30,6 +31,13 @@ mongoose
 app.use(express.static(path.join(__dirname, "/client/build"))); // Serving frontend from node server
 app.use(express.urlencoded({ extended: false })); // For making url encoded postman requests while testing
 app.use(express.json()); // For sending json responses for frontend client
+app.use(
+    session({
+        secret: process.env.SECRET,
+        resave: false,
+        saveUninitialized: false
+    })
+);
 
 //===========================================
 // REST API ROUTES - CALLED BEFORE CATCH ALL

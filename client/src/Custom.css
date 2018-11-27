@@ -461,7 +461,12 @@
 .hoverFWhite:hover {
     color: #fff;
 }
-
+.hoverFSize16:hover {
+    font-size: 1.6rem;
+}
+.hoverFSize21:hover {
+    font-size: 2.1rem;
+}
 /*====== FOCUS CLASSES ======*/
 .focusPink:focus {
     border-color: #ff3697;
