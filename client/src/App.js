@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Header from "./components/Header";
-import IntroVideo from "./components/IntroVideo";
+import IntroGif from "./components/IntroGif";
 import "./Custom.css";
 import { Provider } from "react-redux";
 import store from "./store/store";
@@ -35,7 +35,7 @@ class App extends Component {
                 <Provider store={store}>
                     <div>
                         <Header />
-                        <IntroVideo />
+                        <IntroGif />
                         <WordSwapTitle />
                     </div>
                 </Provider>

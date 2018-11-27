@@ -8,7 +8,7 @@ const s = {
         "screenW screenH blackO40 abs fGreen fSize5 flex column jEnd aCenter fWeight700"
 };
 
-class IntroVideo extends Component {
+class IntroGif extends Component {
     render() {
         return (
             <div className={s.container}>
@@ -26,4 +26,4 @@ class IntroVideo extends Component {
     }
 }
 
-export default IntroVideo;
+export default IntroGif;

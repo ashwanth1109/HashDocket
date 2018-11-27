@@ -15,22 +15,36 @@ const s = {
 };
 
 class HeaderBody extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            signUp: true
+        };
+    }
+
     render() {
+        const selected = " fWhite orangeL";
         return (
             <div className={s.container}>
                 <Spacer h={90} />
                 <div className={s.main}>
                     <div className={s.tabContainer}>
                         <div
-                            className={s.tab}
-                            style={{
-                                backgroundColor: "#FF7144",
-                                color: "#fff"
-                            }}
+                            className={
+                                s.tab + (this.state.signUp ? selected : "")
+                            }
+                            onClick={() => this.setState({ signUp: true })}
                         >
                             SIGN UP
                         </div>
-                        <div className={s.tab}>SIGN IN</div>
+                        <div
+                            className={
+                                s.tab + (this.state.signUp ? "" : selected)
+                            }
+                            onClick={() => this.setState({ signUp: false })}
+                        >
+                            SIGN IN
+                        </div>
                     </div>
                     <div className={s.border} />
                     <div className={s.form}>
@@ -48,7 +62,9 @@ class HeaderBody extends Component {
                         />
                     </div>
                     <div className={s.button}>
-                        Let's create your account now
+                        {this.state.signUp
+                            ? "Let's create your account now"
+                            : "Login to your account now"}
                     </div>
                 </div>
             </div>
