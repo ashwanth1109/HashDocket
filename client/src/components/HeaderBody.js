@@ -25,18 +25,20 @@ const mapStateToProps = state => {
     // console.log(state.user);
     return {
         user: state.user,
-        headerOpen: state.headerOpen
+        headerOpen: state.headerOpen,
+        currentPage: state.currentPage
     };
 };
 
 const mapDispatchToProps = dispatch => {
     //
     return {
-        loginUser: function(user, headerOpen) {
+        loginUser: function(user, headerOpen, currentPage) {
             dispatch({
                 type: "LOGIN_USER",
                 user: user,
-                headerOpen: headerOpen
+                headerOpen: false,
+                currentPage: 1
             });
         }
     };
@@ -47,7 +49,6 @@ class HeaderBody extends Component {
         super(props);
         this.state = {
             signUp: true,
-            user: null,
             authWindow: null
         };
     }
@@ -112,7 +113,8 @@ class HeaderBody extends Component {
                             console.log(`user has logged in`);
                             this.props.loginUser(
                                 data.user,
-                                this.props.headerOpen
+                                this.props.headerOpen,
+                                this.props.currentPage
                             );
                         })
                         .catch(err => {
@@ -162,6 +164,7 @@ class HeaderBody extends Component {
     };
 
     render() {
+        // console.log(this.props);
         const selected = " fWhite orangeL";
         return (
             <div className={s.container}>

@@ -5,13 +5,15 @@ let hashdocket = function(state = [], action) {
         case "TOGGLE_HEADER": {
             return {
                 user: action.user,
-                headerOpen: action.headerOpen
+                headerOpen: action.headerOpen,
+                currentPage: action.currentPage
             };
         }
         case "LOGIN_USER": {
             return {
                 user: action.user,
-                headerOpen: action.headerOpen
+                headerOpen: action.headerOpen,
+                currentPage: action.currentPage
             };
         }
         default: {

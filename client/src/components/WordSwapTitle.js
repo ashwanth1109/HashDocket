@@ -34,11 +34,15 @@ class WordSwapTitle extends Component {
         this.transitionWord();
     }
 
+    componentWillUnmount() {
+        clearInterval(this.timerId);
+    }
+
     //===========================================
     // Transitions the words every 2 seconds
     //===========================================
     transitionWord = () => {
-        setInterval(() => {
+        this.timerId = setInterval(() => {
             const { currentWord, nextWord } = this.state;
             this.transition1();
             this.setState({

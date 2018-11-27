@@ -13,11 +13,11 @@ const s = {
     dynamicHeader:
         "screenW height600 cream abs transition1 zIndex6 flex column",
     dynamicHeaderBody: "flex1",
-    dynamicHeaderBorder: "fullW height10 black",
+    dynamicHeaderBorder: "fullW height10 darkGray",
     container: "width1000 fullH mAuto flex flex1 row jBetween aCenter",
     title: "fWhite fSize2 fWeight500",
     menuButtonOuter:
-        "width120 height120 abs black bRad60 left0 right0 mAuto zIndex5 flex center transition1",
+        "width120 height120 abs darkGray bRad60 left0 right0 mAuto zIndex5 flex center transition1",
     menuButtonInner:
         "width100 height100 green bRad50 flex column jEnd aCenter hoverGreenLight cPointer transition05",
     arrowImage: "width50 height40 imgContain transition1",
@@ -29,18 +29,21 @@ const mapStateToProps = state => {
     if (state.user) {
         return {
             user: state.user,
-            headerOpen: state.headerOpen
+            headerOpen: state.headerOpen,
+            currentPage: state.currentPage
         };
     } else {
         if (state.length === 0) {
             return {
                 user: state.user,
-                headerOpen: false
+                headerOpen: false,
+                currentPage: state.currentPage
             };
         } else {
             return {
                 user: state.user,
-                headerOpen: state.headerOpen
+                headerOpen: state.headerOpen,
+                currentPage: state.currentPage
             };
         }
     }
@@ -48,11 +51,12 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        toggleHeader: function(headerOpen, user) {
+        toggleHeader: function(headerOpen, user, currentPage) {
             dispatch({
                 type: "TOGGLE_HEADER",
                 headerOpen: headerOpen,
-                user: user
+                user: user,
+                currentPage: currentPage
             });
         }
     };
@@ -60,7 +64,11 @@ const mapDispatchToProps = dispatch => {
 
 class Header extends Component {
     toggleHeader = () => {
-        this.props.toggleHeader(!this.props.headerOpen, this.props.user);
+        this.props.toggleHeader(
+            !this.props.headerOpen,
+            this.props.user,
+            this.props.currentPage
+        );
     };
 
     getUsername = () => {

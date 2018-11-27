@@ -1,10 +1,14 @@
 import React, { Component } from "react";
-import Header from "./components/Header";
-import IntroGif from "./components/IntroGif";
+
 import "./Custom.css";
 import { Provider } from "react-redux";
 import store from "./store/store";
-import WordSwapTitle from "./components/WordSwapTitle";
+
+import Header from "./components/Header";
+import HomePage from "./pages/HomePage";
+import DashboardPage from "./pages/DashboardPage";
+
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
 const s = {
     global: "fQuicksand"
@@ -35,8 +39,15 @@ class App extends Component {
                 <Provider store={store}>
                     <div>
                         <Header />
-                        <IntroGif />
-                        <WordSwapTitle />
+                        <Router>
+                            <div>
+                                <Route exact path="/" component={HomePage} />
+                                <Route
+                                    path="/dashboard"
+                                    component={DashboardPage}
+                                />
+                            </div>
+                        </Router>
                     </div>
                 </Provider>
             </div>
