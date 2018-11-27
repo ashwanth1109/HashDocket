@@ -55,12 +55,19 @@ const usersController = require("./controllers/users");
 app.use("/api/users", usersController);
 
 //===========================================
+// GITHUB API ROUTE
+//===========================================
+const githubController = require("./controllers/github");
+app.use("/api/github", githubController);
+
+//===========================================
 // CATCH ALL FOR ANY ROUTE THAT DOESNT EXIST
 // SEND IT TO REACT'S INDEX PAGE
 //===========================================
-app.get("*", (req, res) =>
-    res.sendFile(path.join(__dirname + "/../client/build/index.html"))
-);
+app.get("*", (req, res) => {
+    console.log(`Entering catch all route to display index`);
+    res.sendFile(path.join(__dirname + "/../client/build/index.html"));
+});
 
 //===========================================
 // SET UP APP LISTENER ON PORT

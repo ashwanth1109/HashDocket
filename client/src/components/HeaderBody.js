@@ -104,6 +104,66 @@ class HeaderBody extends Component {
         }
     };
 
+    githubLogin = () => {
+        const AUTHORIZE_URL = "https://github.com/login/oauth/authorize";
+        const REDIRECT_URI = "http://localhost:3001/api/github/callback";
+        const ENCODED_REDIRECT_URI = encodeURIComponent(REDIRECT_URI);
+        const CLIENT_ID = "12a0ff06416a332cd7f1";
+        const url = `${AUTHORIZE_URL}?scope=user%3Aemail&client_id=${CLIENT_ID}&redirect_uri=${ENCODED_REDIRECT_URI}`;
+        const authPromise = this.popUpWindow(url);
+        console.log(authPromise);
+        // returnValue.then(data => console.log(data));
+    };
+
+    popUpWindow = myUrl => {
+        const windowArea = {
+            width: 1000,
+            height: 630,
+            left: Math.floor(window.screenX + (window.outerWidth - 1000) / 2),
+            top: Math.floor(window.screenY + (window.outerHeight - 630) / 8)
+        };
+        const sep = myUrl.indexOf("?") !== -1 ? "&" : "?";
+        const url = `${myUrl}${sep}`;
+        const windowOpts = `toolbar=0,scrollbars=1,status=1,resizable=1,location=1,menuBar=0,
+                            width=${windowArea.width},
+                            height=${windowArea.height},
+                            left=${windowArea.left},
+                            top=${windowArea.top}`;
+        const authWindow = window.open(url, "_blank", windowOpts);
+        const eventMethod = window["addEventListener"];
+        const authPromise = new Promise((resolve, reject) => {
+            eventMethod(
+                "message",
+                msg => {
+                    if (
+                        !~msg.origin.indexOf(
+                            `${window.location.protocol}//${
+                                window.location.host
+                            }`
+                        )
+                    ) {
+                        authWindow.close();
+                        reject("Not allowed");
+                    }
+                    if (msg.data.payload) {
+                        try {
+                            resolve(JSON.parse(msg.data.payload));
+                        } catch (err) {
+                            resolve(msg.data.payload);
+                        } finally {
+                            authWindow.close();
+                        }
+                    } else {
+                        authWindow.close();
+                        reject("Unauthorized");
+                    }
+                },
+                false
+            );
+        });
+        return authPromise;
+    };
+
     render() {
         const selected = " fWhite orangeL";
         return (
@@ -159,6 +219,7 @@ class HeaderBody extends Component {
                             className={
                                 s.socialTab + " githubBlack hoverGithubBlack"
                             }
+                            onClick={() => this.githubLogin()}
                         >
                             GITHUB
                         </div>
