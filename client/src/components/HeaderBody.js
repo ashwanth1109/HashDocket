@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import Spacer from "./Spacer";
 
+import { connect } from "react-redux";
+
 const s = {
     container: "fullW fullH flex column",
     main: "width1000 fullH mAuto white flex column",
@@ -17,12 +19,36 @@ const s = {
         "flex1 flex center fSize15 fWhite transition05 cPointer hoverFSize16"
 };
 
+const mapStateToProps = state => {
+    //
+    // console.log(`entering map state to props`);
+    // console.log(state.user);
+    return {
+        user: state.user,
+        headerOpen: state.headerOpen
+    };
+};
+
+const mapDispatchToProps = dispatch => {
+    //
+    return {
+        loginUser: function(user, headerOpen) {
+            dispatch({
+                type: "LOGIN_USER",
+                user: user,
+                headerOpen: headerOpen
+            });
+        }
+    };
+};
+
 class HeaderBody extends Component {
     constructor(props) {
         super(props);
         this.state = {
             signUp: true,
-            user: null
+            user: null,
+            authWindow: null
         };
     }
 
@@ -84,9 +110,10 @@ class HeaderBody extends Component {
                     res.json()
                         .then(data => {
                             console.log(`user has logged in`);
-                            this.setState({
-                                user: data
-                            });
+                            this.props.loginUser(
+                                data.user,
+                                this.props.headerOpen
+                            );
                         })
                         .catch(err => {
                             console.log(err);
@@ -110,9 +137,10 @@ class HeaderBody extends Component {
         const ENCODED_REDIRECT_URI = encodeURIComponent(REDIRECT_URI);
         const CLIENT_ID = "12a0ff06416a332cd7f1";
         const url = `${AUTHORIZE_URL}?scope=user%3Aemail&client_id=${CLIENT_ID}&redirect_uri=${ENCODED_REDIRECT_URI}`;
-        const authPromise = this.popUpWindow(url);
-        console.log(authPromise);
-        // returnValue.then(data => console.log(data));
+        const authWindow = this.popUpWindow(url);
+        this.setState({
+            authWindow: authWindow
+        });
     };
 
     popUpWindow = myUrl => {
@@ -130,38 +158,7 @@ class HeaderBody extends Component {
                             left=${windowArea.left},
                             top=${windowArea.top}`;
         const authWindow = window.open(url, "_blank", windowOpts);
-        const eventMethod = window["addEventListener"];
-        const authPromise = new Promise((resolve, reject) => {
-            eventMethod(
-                "message",
-                msg => {
-                    if (
-                        !~msg.origin.indexOf(
-                            `${window.location.protocol}//${
-                                window.location.host
-                            }`
-                        )
-                    ) {
-                        authWindow.close();
-                        reject("Not allowed");
-                    }
-                    if (msg.data.payload) {
-                        try {
-                            resolve(JSON.parse(msg.data.payload));
-                        } catch (err) {
-                            resolve(msg.data.payload);
-                        } finally {
-                            authWindow.close();
-                        }
-                    } else {
-                        authWindow.close();
-                        reject("Unauthorized");
-                    }
-                },
-                false
-            );
-        });
-        return authPromise;
+        return authWindow;
     };
 
     render() {
@@ -237,4 +234,9 @@ class HeaderBody extends Component {
     }
 }
 
-export default HeaderBody;
+const ConnectedComponent = connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(HeaderBody);
+
+export default ConnectedComponent;

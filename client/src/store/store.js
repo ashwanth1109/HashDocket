@@ -4,6 +4,13 @@ let hashdocket = function(state = [], action) {
     switch (action.type) {
         case "TOGGLE_HEADER": {
             return {
+                user: action.user,
+                headerOpen: action.headerOpen
+            };
+        }
+        case "LOGIN_USER": {
+            return {
+                user: action.user,
                 headerOpen: action.headerOpen
             };
         }

@@ -25,28 +25,46 @@ const s = {
 };
 
 const mapStateToProps = state => {
-    if (state.length === 0) {
+    // console.log(state.user);
+    if (state.user) {
         return {
-            headerOpen: false
-        };
-    } else {
-        return {
+            user: state.user,
             headerOpen: state.headerOpen
         };
+    } else {
+        if (state.length === 0) {
+            return {
+                user: state.user,
+                headerOpen: false
+            };
+        } else {
+            return {
+                user: state.user,
+                headerOpen: state.headerOpen
+            };
+        }
     }
 };
 
 const mapDispatchToProps = dispatch => {
     return {
-        toggleHeader: function(headerOpen) {
-            dispatch({ type: "TOGGLE_HEADER", headerOpen: headerOpen });
+        toggleHeader: function(headerOpen, user) {
+            dispatch({
+                type: "TOGGLE_HEADER",
+                headerOpen: headerOpen,
+                user: user
+            });
         }
     };
 };
 
 class Header extends Component {
     toggleHeader = () => {
-        this.props.toggleHeader(!this.props.headerOpen);
+        this.props.toggleHeader(!this.props.headerOpen, this.props.user);
+    };
+
+    getUsername = () => {
+        return this.props.user.email.split("@")[0];
     };
     render() {
         const { headerOpen } = this.props;
@@ -79,7 +97,11 @@ class Header extends Component {
                     <div className={s.staticHeader}>
                         <div className={s.container}>
                             <Logo />
-                            <div className={s.title}>HASH-DOCKET</div>
+                            <div className={s.title}>
+                                {this.props.user
+                                    ? this.getUsername()
+                                    : "HASH-DOCKET"}
+                            </div>
                         </div>
                     </div>
                     <div

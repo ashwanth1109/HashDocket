@@ -62,7 +62,7 @@ Router.post("/login", (req, res) => {
                 if (isMatch) {
                     req.session.user = foundUser;
                     res.json({
-                        message: "User has logged in successfully"
+                        user: foundUser
                     });
                 } else {
                     errors.password = "Password incorrect";
