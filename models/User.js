@@ -15,5 +15,17 @@ const userSchema = Schema({
     password: {
         type: String,
         required: true
+    },
+    tasks: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: "tasks"
+        }
+    ],
+    date: {
+        type: Date,
+        default: Date.now
     }
 });
+
+module.exports = User = mongoose.model("users", userSchema);
