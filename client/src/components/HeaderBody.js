@@ -11,7 +11,9 @@ const s = {
     form: "flex1 center width600 mAuto flex column jEvenly",
     input: "fullW height50 bGray5 bOrangeFocus5 bRad10 noOutline pad10 fSize2",
     button:
-        "fullW height70 flex center orangeL hoverOrange cPointer fSize2 fWhite fWeight500 transition05"
+        "fullW height70 flex center green hoverGreenD cPointer fSize2 fWeight500 transition05",
+    socialTabContainer: "fullW height70 flex row",
+    socialTab: "flex1 flex center fSize15 fWhite transition05 cPointer"
 };
 
 class HeaderBody extends Component {
@@ -65,6 +67,25 @@ class HeaderBody extends Component {
                         {this.state.signUp
                             ? "Let's create your account now"
                             : "Login to your account now"}
+                    </div>
+                    <div className={s.socialTabContainer}>
+                        <div className={s.socialTab + " fbBlue hoverFbBlue"}>
+                            FACEBOOK
+                        </div>
+                        <div
+                            className={
+                                s.socialTab + " githubBlack hoverGithubBlack"
+                            }
+                        >
+                            GITHUB
+                        </div>
+                        <div
+                            className={
+                                s.socialTab + " googleRed hoverGoogleRed"
+                            }
+                        >
+                            GOOGLE
+                        </div>
                     </div>
                 </div>
             </div>

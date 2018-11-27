@@ -41,6 +41,12 @@ app.get("/api", (req, res) =>
 );
 
 //===========================================
+// USER API ROUTES
+//===========================================
+const usersController = require("./controllers/users");
+app.use("/api/users", usersController);
+
+//===========================================
 // CATCH ALL FOR ANY ROUTE THAT DOESNT EXIST
 // SEND IT TO REACT'S INDEX PAGE
 //===========================================
