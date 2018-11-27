@@ -21,9 +21,57 @@ class HeaderBody extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            signUp: true
+            signUp: true,
+            user: null
         };
     }
+
+    signUp = () => {
+        //===========================================
+        // Create new user object
+        //===========================================
+        const newUser = {
+            email: this.refs.email.value,
+            password: this.refs.password.value
+        };
+        //===========================================
+        // Make a POST request to api/users/register
+        //===========================================
+        fetch("/api/users/register", {
+            headers: {
+                // prettier-ignore
+                "Accept": "application/json",
+                "Content-Type": "application/json"
+            },
+            method: "POST",
+            body: JSON.stringify(newUser)
+        })
+            .then(res => {
+                if (res.status === 400) {
+                    console.log(`400 error was logged`);
+                }
+                res.json()
+                    .then(data =>
+                        this.setState({
+                            user: data
+                        })
+                    )
+                    .catch(err => console.log(err));
+            })
+            .catch(err => console.log(err));
+    };
+
+    logIn = () => {
+        //
+    };
+
+    signUpOrLogin = () => {
+        if (this.state.signUp) {
+            this.signUp();
+        } else {
+            this.logIn();
+        }
+    };
 
     render() {
         const selected = " fWhite orangeL";
@@ -64,7 +112,10 @@ class HeaderBody extends Component {
                             className={s.input}
                         />
                     </div>
-                    <div className={s.button}>
+                    <div
+                        className={s.button}
+                        onClick={() => this.signUpOrLogin()}
+                    >
                         {this.state.signUp
                             ? "Let's create your account now"
                             : "Login to your account now"}
