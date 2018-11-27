@@ -4,13 +4,14 @@ import Spacer from "./Spacer";
 const s = {
     container: "width1000 mAuto height400 flex center column",
     title: "fSize3 fWeight500 fullW height80 flex row aCenter zIndex1",
-    blank: "fullW height80 blackO70 zIndex2",
+    blank: "fullW height80 white zIndex2",
     flex: "flex1",
     wordSwap: "width220 height80 relative",
     word: "abs width220 height80 flex aCenter"
 };
 
-const words = ["Plan", "Organize", "Track"];
+const words = ["Plan.", "Organize.", "Track."];
+const wordColor = ["#456BEF", "#FF521B", "#45CB85"];
 
 class WordSwapTitle extends Component {
     constructor(props) {
@@ -19,12 +20,12 @@ class WordSwapTitle extends Component {
             currentWord: {
                 index: 0,
                 position: "0px",
-                transition: "1s ease-in-out"
+                transition: "bottom 1s ease-in-out"
             },
             nextWord: {
                 index: 1,
                 position: "80px",
-                transition: "1s ease-in-out"
+                transition: "bottom 1s ease-in-out"
             }
         };
     }
@@ -93,11 +94,11 @@ class WordSwapTitle extends Component {
         if (nextWord.position === "0px") {
             currentWord["index"] =
                 nextWord.index === 2 ? 0 : nextWord.index + 1;
-            currentWord["transition"] = "1s ease-in-out";
+            currentWord["transition"] = "bottom 1s ease-in-out";
         } else {
             nextWord["index"] =
                 currentWord.index === 2 ? 0 : currentWord.index + 1;
-            nextWord["transition"] = "1s ease-in-out";
+            nextWord["transition"] = "bottom 1s ease-in-out";
         }
     };
     render() {
@@ -114,7 +115,8 @@ class WordSwapTitle extends Component {
                             className={s.word}
                             style={{
                                 bottom: nextWord.position,
-                                transition: nextWord.transition
+                                transition: nextWord.transition,
+                                color: wordColor[nextWord.index]
                             }}
                         >
                             {words[nextWord.index]}
@@ -123,7 +125,8 @@ class WordSwapTitle extends Component {
                             className={s.word}
                             style={{
                                 bottom: currentWord.position,
-                                transition: currentWord.transition
+                                transition: currentWord.transition,
+                                color: wordColor[currentWord.index]
                             }}
                         >
                             {words[currentWord.index]}

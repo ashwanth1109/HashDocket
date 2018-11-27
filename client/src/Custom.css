@@ -238,6 +238,12 @@
 .cream {
     background-color: #c1dbb3;
 }
+.orange {
+    background-color: #ff521b;
+}
+.orangeL {
+    background-color: #ff7144;
+}
 .gray1 {
     background-color: slategray;
 }
@@ -394,11 +400,20 @@
 .bRad100 {
     border-radius: 100%;
 }
+.noOutline:focus {
+    outline: none;
+}
 .bPink {
     border: 2px solid #ff3697;
 }
 .bGray10 {
     border: 10px solid #575a5e;
+}
+.bGray5 {
+    border: 5px solid #575a5e;
+}
+.bOrangeFocus5:focus {
+    border: 5px solid #ff521b;
 }
 .bPinkFocus:focus {
     border: 2px solid #ff3697;
@@ -412,6 +427,12 @@
 /*====== HOVER CLASSES ======*/
 .hoverGreenLight:hover {
     background-color: #3cfe94;
+}
+.hoverOrange:hover {
+    background-color: #ff521b;
+}
+.hoverFWhite:hover {
+    color: #fff;
 }
 
 /*====== FOCUS CLASSES ======*/

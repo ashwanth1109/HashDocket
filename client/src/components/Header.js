@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Logo from "./Logo";
 import Spacer from "./Spacer";
+import HeaderBody from "./HeaderBody";
 import arrowDown from "../assets/chevron-arrow-down.png";
 
 import { connect } from "react-redux";
@@ -85,7 +86,9 @@ class Header extends Component {
                         className={s.dynamicHeader}
                         style={{ bottom: headerPosition }}
                     >
-                        <div className={s.dynamicHeaderBody} />
+                        <div className={s.dynamicHeaderBody}>
+                            <HeaderBody />
+                        </div>
                         <div className={s.dynamicHeaderBorder} />
                     </div>
                 </div>
