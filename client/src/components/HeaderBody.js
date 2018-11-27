@@ -51,18 +51,49 @@ class HeaderBody extends Component {
                     console.log(`400 error was logged`);
                 }
                 res.json()
-                    .then(data =>
-                        this.setState({
-                            user: data
-                        })
-                    )
+                    .then(data => console.log(`User account created`))
                     .catch(err => console.log(err));
             })
             .catch(err => console.log(err));
     };
 
     logIn = () => {
-        //
+        //===========================================
+        // Create object to store the user logging in
+        //===========================================
+        const user = {
+            email: this.refs.email.value,
+            password: this.refs.password.value
+        };
+        //===========================================
+        // Make a POST request to api/users/login
+        //===========================================
+        fetch("/api/users/login", {
+            headers: {
+                //prettier-ignore
+                "Accept": "application/json",
+                "Content-Type": "application/json"
+            },
+            method: "POST",
+            body: JSON.stringify(user)
+        })
+            .then(res => {
+                if (res.status === 400 || res.status === 404) {
+                    // Bad credentials error I think
+                } else {
+                    res.json()
+                        .then(data => {
+                            console.log(`user has logged in`);
+                            this.setState({
+                                user: data
+                            });
+                        })
+                        .catch(err => {
+                            console.log(err);
+                        });
+                }
+            })
+            .catch(err => console.log(err));
     };
 
     signUpOrLogin = () => {
