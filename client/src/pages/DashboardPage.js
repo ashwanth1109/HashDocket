@@ -18,7 +18,7 @@ const mapStateToProps = state => {
         };
     } else {
         return {
-            currentPage: state.currentPage, // change to 0 for protected routes
+            currentPage: 0, // change to 0 for protected routes
             user: state.user
         };
     }

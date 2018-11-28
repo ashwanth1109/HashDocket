@@ -24,6 +24,9 @@
 }
 
 /*====== WIDTH: SPECIFIC ======*/
+.width5 {
+    width: 5px;
+}
 .width10 {
     width: 10px;
 }
@@ -256,6 +259,9 @@
 }
 .darkGray {
     background-color: #575a5e;
+}
+.lightGray {
+    background-color: #e0e0e0;
 }
 .green {
     background-color: #35e484;
