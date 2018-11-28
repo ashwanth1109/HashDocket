@@ -1,8 +1,11 @@
 import React, { Component } from "react";
+import Spacer from "../components/Spacer";
 import { connect } from "react-redux";
+import Docket from "../components/Docket";
 
 const s = {
-    container: "fullW height20 flex center"
+    container: "width1000 mAuto flex column zIndex4",
+    body: "fullW zIndex4"
 };
 
 const mapStateToProps = state => {
@@ -15,7 +18,7 @@ const mapStateToProps = state => {
         };
     } else {
         return {
-            currentPage: 0,
+            currentPage: state.currentPage, // change to 0 for protected routes
             user: state.user
         };
     }
@@ -29,7 +32,10 @@ class DashboardPage extends Component {
         }
         return (
             <div className={s.container}>
-                <div>DashboardPage</div>
+                <Spacer h={150} />
+                <div className={s.body}>
+                    <Docket />
+                </div>
             </div>
         );
     }

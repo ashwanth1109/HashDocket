@@ -135,10 +135,14 @@
     height: 600px;
 }
 
-/*====== FLEX ======*/
+/*====== DISPLAY ======*/
 .flex {
     display: flex;
 }
+.displayNone {
+    display: none;
+}
+/*====== FLEX ======*/
 .row {
     flex-direction: row;
 }
@@ -273,6 +277,9 @@
 }
 
 /*====== BACKGROUND COLOR OPACITY ======*/
+.blackO0 {
+    background-color: #00000000;
+}
 .blackO40 {
     background-color: #00000066;
 }
@@ -322,6 +329,12 @@
 .pad10 {
     padding: 10px;
 }
+.pad20 {
+    padding: 20px;
+}
+.pad30 {
+    padding: 30px;
+}
 
 /*====== BOX SIZING ======*/
 .borderBox {
@@ -355,8 +368,14 @@
 .right0 {
     right: 0px;
 }
+.right20 {
+    right: 20px;
+}
 
 /*====== Z INDEX ======*/
+.zIndexM1 {
+    z-index: -1;
+}
 .zIndex1 {
     z-index: 1;
 }
@@ -443,6 +462,9 @@
 .hoverGreenLight:hover {
     background-color: #3cfe94;
 }
+.hoverDarkGray:hover {
+    background-color: #333;
+}
 .hoverOrange:hover {
     background-color: #ff521b;
 }
@@ -467,6 +489,9 @@
 .hoverFSize21:hover {
     font-size: 2.1rem;
 }
+.hoverHeight50:hover {
+    height: 50px;
+}
 /*====== FOCUS CLASSES ======*/
 .focusPink:focus {
     border-color: #ff3697;
@@ -478,6 +503,9 @@
 }
 .transition1 {
     transition: 1s ease-in-out;
+}
+.transition1Bg {
+    transition: 1s ease-in-out background-color;
 }
 .rotate180 {
     transform: rotate(180deg);

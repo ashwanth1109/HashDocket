@@ -7,21 +7,21 @@ import arrowDown from "../assets/chevron-arrow-down.png";
 import { connect } from "react-redux";
 
 const s = {
-    headerContainer: "screenW height80 fixed zIndex5",
+    headerContainer: "screenW height80 fixed",
     header: "screenW height80 relative",
     staticHeader: "fullW fullH black zIndex7 abs",
     dynamicHeader:
         "screenW height600 cream abs transition1 zIndex6 flex column",
-    dynamicHeaderBody: "flex1",
-    dynamicHeaderBorder: "fullW height10 darkGray",
-    container: "width1000 fullH mAuto flex flex1 row jBetween aCenter",
+    dynamicHeaderBody: "flex1 zIndex5",
+    dynamicHeaderBorder: "fullW height10 darkGray zIndex5",
+    container: "width1000 fullH mAuto flex flex1 row jBetween aCenter zIndex5",
     title: "fWhite fSize2 fWeight500",
     menuButtonOuter:
         "width120 height120 abs darkGray bRad60 left0 right0 mAuto zIndex5 flex center transition1",
     menuButtonInner:
         "width100 height100 green bRad50 flex column jEnd aCenter hoverGreenLight cPointer transition05",
     arrowImage: "width50 height40 imgContain transition1",
-    bgOverlayDarken: "abs screenW screenH transition1"
+    bgOverlayDarken: "abs screenW screenH transition1Bg"
 };
 
 const mapStateToProps = state => {
@@ -63,7 +63,27 @@ const mapDispatchToProps = dispatch => {
 };
 
 class Header extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            headerZ: " zIndex4"
+        };
+    }
+
     toggleHeader = () => {
+        console.log(!this.props.headerOpen);
+        if (!this.props.headerOpen) {
+            console.log(`header is `);
+            this.setState({
+                headerZ: " zIndex5"
+            });
+        } else {
+            setTimeout(() => {
+                this.setState({
+                    headerZ: " zIndex4"
+                });
+            }, 1000);
+        }
         this.props.toggleHeader(
             !this.props.headerOpen,
             this.props.user,
@@ -75,13 +95,14 @@ class Header extends Component {
         return this.props.user.email.split("@")[0];
     };
     render() {
+        console.log(this.state.bgOverlayZClass);
         const { headerOpen } = this.props;
         const headerPosition = headerOpen ? "-520px" : "0px";
         const arrowPosition = headerOpen ? "-575px" : "-55px";
         const arrowDirection = headerOpen ? "-180deg" : "0deg";
-        const bgOverlayDarken = headerOpen ? "#00000066" : "";
+        const bgOverlayDarken = headerOpen ? " blackO40" : " blackO0";
         return (
-            <div className={s.headerContainer}>
+            <div className={s.headerContainer + this.state.headerZ}>
                 <div className={s.header}>
                     <div
                         className={s.menuButtonOuter}
@@ -123,10 +144,7 @@ class Header extends Component {
                     </div>
                 </div>
                 <div>
-                    <div
-                        className={s.bgOverlayDarken}
-                        style={{ backgroundColor: bgOverlayDarken }}
-                    />
+                    <div className={s.bgOverlayDarken + bgOverlayDarken} />
                 </div>
             </div>
         );
