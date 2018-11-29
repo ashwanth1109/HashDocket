@@ -36,7 +36,11 @@ class DashboardPage extends Component {
                 <Spacer h={150} />
                 <div className={s.body}>
                     {dockets.map((docket, id) => (
-                        <Docket key={id} title={docket.name} />
+                        <Docket
+                            key={id}
+                            title={docket.name}
+                            items={docket.items}
+                        />
                     ))}
                 </div>
             </div>

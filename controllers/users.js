@@ -32,9 +32,13 @@ Router.post("/register", (req, res) => {
                 return res.status(400).json(errors);
             } else {
                 const newUser = new User(req.body);
+                const newDocketItem = new DocketItem({
+                    task: "Click to enter your task here",
+                    people: [newUser._id]
+                });
                 const newDocket = {
                     name: "My First Docket",
-                    items: []
+                    items: [newDocketItem._id]
                 };
                 newUser.dockets.push(newDocket);
                 bcrypt.genSalt(10, (err, salt) => {

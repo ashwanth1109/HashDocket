@@ -15,14 +15,12 @@ class Docket extends Component {
             <div>
                 <DocketHeader title={title} />
                 <DocketTitles />
-                {items !== undefined
-                    ? items.map((item, id) => (
-                          <div>
-                              <DocketItem />
-                              <Spacer h={1} />
-                          </div>
-                      ))
-                    : null}
+                {items.map((item, id) => (
+                    <div>
+                        <DocketItem />
+                        <Spacer h={1} />
+                    </div>
+                ))}
             </div>
         );
     }
