@@ -16,7 +16,7 @@ class Docket extends Component {
                 <DocketHeader title={title} />
                 <DocketTitles />
                 {items.map((item, id) => (
-                    <div>
+                    <div key={id}>
                         <DocketItem />
                         <Spacer h={1} />
                     </div>
