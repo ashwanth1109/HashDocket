@@ -34,6 +34,7 @@ class TextOrInput extends Component {
                 </div>
             );
         } else {
+            console.log(children);
             return (
                 <input
                     type="text"

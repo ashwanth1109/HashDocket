@@ -66,29 +66,37 @@ class Header extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            headerZ: " zIndex4"
+            headerZ: " zIndex5"
         };
     }
 
+    componentWillReceiveProps() {
+        this.checkHeaderZIndex();
+    }
+
     toggleHeader = () => {
-        console.log(!this.props.headerOpen);
+        // this.checkHeaderZIndex();
+        this.props.toggleHeader(
+            !this.props.headerOpen,
+            this.props.user,
+            this.props.currentPage
+        );
+    };
+
+    checkHeaderZIndex = () => {
         if (!this.props.headerOpen) {
-            console.log(`header is `);
+            console.log(`header was closed and is opening now`);
             this.setState({
                 headerZ: " zIndex5"
             });
         } else {
+            console.log(`header was open and is closing now`);
             setTimeout(() => {
                 this.setState({
                     headerZ: " zIndex4"
                 });
             }, 1000);
         }
-        this.props.toggleHeader(
-            !this.props.headerOpen,
-            this.props.user,
-            this.props.currentPage
-        );
     };
 
     getUsername = () => {
