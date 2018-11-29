@@ -16,16 +16,22 @@ const userSchema = Schema({
         type: String,
         required: true
     },
-    tasks: [
+    dockets: [
         {
             type: Schema.Types.ObjectId,
-            ref: "tasks"
+            ref: "docketItems"
         }
     ],
     date: {
         type: Date,
         default: Date.now
-    }
+    },
+    hashes: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: "hashedItems"
+        }
+    ]
 });
 
 module.exports = User = mongoose.model("users", userSchema);

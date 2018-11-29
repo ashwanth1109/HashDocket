@@ -55,6 +55,12 @@ const usersController = require("./controllers/users");
 app.use("/api/users", usersController);
 
 //===========================================
+// DOCKET API ROUTES
+//===========================================
+const docketItemsController = require("./controllers/docketItems");
+app.use("/api/docket", docketItemsController);
+
+//===========================================
 // GITHUB API ROUTE
 //===========================================
 const githubController = require("./controllers/github");
