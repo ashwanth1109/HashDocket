@@ -10,7 +10,8 @@ import Spacer from "./Spacer";
 
 class Docket extends Component {
     render() {
-        const { title, items } = this.props;
+        const { title, items, docketId } = this.props;
+        console.log(docketId);
         return (
             <div>
                 <DocketHeader title={title} />

@@ -13,8 +13,8 @@ class TextOrInput extends Component {
     }
 
     toggleTextAndInput = () => {
-        console.log(`toggle text and input`);
-        console.log(!this.state.textMode);
+        // console.log(`toggle text and input`);
+        // console.log(!this.state.textMode);
         if (!this.state.textMode) {
             this.props.updateData();
         }
@@ -34,7 +34,7 @@ class TextOrInput extends Component {
                 </div>
             );
         } else {
-            console.log(children);
+            // console.log(children);
             return (
                 <input
                     type="text"

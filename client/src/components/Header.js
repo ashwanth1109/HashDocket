@@ -75,7 +75,6 @@ class Header extends Component {
     }
 
     toggleHeader = () => {
-        // this.checkHeaderZIndex();
         this.props.toggleHeader(
             !this.props.headerOpen,
             this.props.user,

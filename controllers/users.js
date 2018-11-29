@@ -36,6 +36,16 @@ Router.post("/register", (req, res) => {
                     task: "Click to enter your task here",
                     people: [newUser._id]
                 });
+                newDocketItem
+                    .save()
+                    .then(docketItem => {
+                        console.log(`docket item saved successfully in db`);
+                    })
+                    .catch(err => {
+                        console.log(
+                            `error when trying to save docket item: ${err}`
+                        );
+                    });
                 const newDocket = {
                     name: "My First Docket",
                     items: [newDocketItem._id]
