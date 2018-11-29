@@ -95,7 +95,6 @@ class Header extends Component {
         return this.props.user.email.split("@")[0];
     };
     render() {
-        console.log(this.state.bgOverlayZClass);
         const { headerOpen } = this.props;
         const headerPosition = headerOpen ? "-520px" : "0px";
         const arrowPosition = headerOpen ? "-575px" : "-55px";

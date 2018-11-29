@@ -18,8 +18,16 @@ const userSchema = Schema({
     },
     dockets: [
         {
-            type: Schema.Types.ObjectId,
-            ref: "docketItems"
+            name: {
+                type: String,
+                required: true
+            },
+            items: [
+                {
+                    type: Schema.Types.ObjectId,
+                    ref: "docketItems"
+                }
+            ]
         }
     ],
     date: {

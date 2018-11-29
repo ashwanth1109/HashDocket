@@ -10,7 +10,7 @@ const s = {
 
 const mapStateToProps = state => {
     //
-    console.log(state.user);
+    // console.log(state.user);
     if (state.user) {
         return {
             currentPage: state.currentPage,
@@ -26,7 +26,7 @@ const mapStateToProps = state => {
 
 class DashboardPage extends Component {
     render() {
-        // console.log(this.props);
+        console.log(this.props);
         if (this.props.currentPage === 0) {
             this.props.history.push("/");
         }

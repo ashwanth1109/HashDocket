@@ -6,9 +6,10 @@ const Router = express.Router();
 const bcrypt = require("bcryptjs");
 
 //===========================================
-// IMPORT IN USER MODEL
+// IMPORT IN USER & DOCKET ITEM MODEL
 //===========================================
 const User = require("../models/User");
+const DocketItem = require("../models/DocketItem");
 
 //===========================================
 // @route GET api/users/test
@@ -31,6 +32,10 @@ Router.post("/register", (req, res) => {
                 return res.status(400).json(errors);
             } else {
                 const newUser = new User(req.body);
+                const newDocket = {
+                    name: "My First Docket"
+                };
+                newUser.dockets.push(newDocket);
                 bcrypt.genSalt(10, (err, salt) => {
                     bcrypt.hash(newUser.password, salt, (err, hash) => {
                         if (err) throw err;
