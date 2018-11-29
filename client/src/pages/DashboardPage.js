@@ -30,7 +30,7 @@ class DashboardPage extends Component {
         if (this.props.currentPage === 0) {
             this.props.history.push("/");
         }
-        const { dockets } = this.props.user;
+        const dockets = this.props.user ? this.props.user.dockets : [];
         return (
             <div className={s.container}>
                 <Spacer h={150} />
