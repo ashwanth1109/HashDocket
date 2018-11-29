@@ -30,11 +30,14 @@ class DashboardPage extends Component {
         if (this.props.currentPage === 0) {
             this.props.history.push("/");
         }
+        const { dockets } = this.props.user;
         return (
             <div className={s.container}>
                 <Spacer h={150} />
                 <div className={s.body}>
-                    <Docket />
+                    {dockets.map((docket, id) => (
+                        <Docket key={id} title={docket.name} />
+                    ))}
                 </div>
             </div>
         );

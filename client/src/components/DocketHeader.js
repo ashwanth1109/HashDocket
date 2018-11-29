@@ -27,7 +27,7 @@ class DocketHeader extends Component {
         return (
             <div className={s.container}>
                 <Spacer w={20} />
-                <div className={s.title}>My First Docket</div>
+                <div className={s.title}>{this.props.title}</div>
                 <div
                     className={s.addContainer}
                     onClick={() => this.addDocketItem()}

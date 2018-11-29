@@ -12,7 +12,7 @@ class Docket extends Component {
     render() {
         return (
             <div>
-                <DocketHeader />
+                <DocketHeader title={this.props.title} />
                 <DocketTitles />
                 <DocketItem />
                 <Spacer h={1} />
