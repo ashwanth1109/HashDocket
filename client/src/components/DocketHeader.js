@@ -34,6 +34,7 @@ import TextOrInput from "./TextOrInput";
 // };
 
 const mapStateToProps = state => {
+    console.log(`mapStateToProps: DocketHeader`);
     return {
         user: state.user
     };
@@ -85,8 +86,8 @@ class DocketHeader extends Component {
         })
             .then(res => {
                 res.json()
-                    .then(updatedUser => {
-                        console.log(user);
+                    .then(data => {
+                        console.log(data);
                         //===========================================
                         // UPDATE REDUX STATE HERE
                         //===========================================

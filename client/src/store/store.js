@@ -3,7 +3,7 @@ import { createStore, combineReducers } from "redux";
 //===========================================
 // HEADER REDUCER
 //===========================================
-const header = (state = false, action) => {
+const header = (state = { headerOpen: false, headerZ: false }, action) => {
     switch (action.type) {
         case "SET_HEADER":
             return {
@@ -11,10 +11,7 @@ const header = (state = false, action) => {
                 headerZ: action.headerZ
             };
         default:
-            return {
-                headerOpen: state,
-                headerZ: state
-            };
+            return state;
     }
 };
 
@@ -24,8 +21,13 @@ const header = (state = false, action) => {
 const user = (state = null, action) => {
     switch (action.type) {
         case "UPDATE_USER":
-            return action.user;
-        // case "GET_USER":
+            //===========================================
+            // NEVER EVER EVER EVER EVER EVER EVER
+            // MUTATE STATE DIRECTLY IN YOUR ACTION
+            // REDUX DOESNT DETECT IT
+            //===========================================
+            return Object.assign({}, action.user);
+        // case "UPDATE":
         //     return action.users;
         default:
             return state;

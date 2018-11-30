@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Spacer from "../components/Spacer";
 import Docket from "../components/Docket";
 import { connect } from "react-redux";
+import AddDocket from "../components/AddDocket";
 
 const s = {
     container: "width1000 mAuto flex column zIndex4",
@@ -46,6 +47,8 @@ class DashboardPage extends Component {
                         <Docket key={id} items={docket.items} docketId={id} />
                     ))}
                 </div>
+                <Spacer h={100} />
+                <AddDocket />
             </div>
         );
     }

@@ -97,7 +97,7 @@ Router.post("/login", (req, res) => {
 });
 
 //===========================================
-// @route POST api/users/update/userId
+// @route PUT api/users/update
 // @desc Update user data
 // @access PUBLIC
 //===========================================
@@ -106,6 +106,40 @@ Router.put("/update", (req, res) => {
         .then(updatedUser => {
             console.log(updatedUser);
             res.json({ message: "User updated succesfully" });
+        })
+        .catch(err => console.log(err));
+});
+
+//===========================================
+// @route PUT api/users/addDocket
+//===========================================
+Router.put("/addDocket", (req, res) => {
+    User.findById(req.body._id)
+        .then(user => {
+            const newDocketItem = new DocketItem({
+                task: "Click to enter your task here",
+                people: [user._id]
+            });
+            newDocketItem
+                .save()
+                .then(docketItem => {
+                    console.log(`docket item saved successfully in db`);
+                })
+                .catch(err => {
+                    console.log(
+                        `error when trying to save docket item: ${err}`
+                    );
+                });
+            const newDocket = {
+                name: "Click to edit name",
+                items: [newDocketItem._id]
+            };
+            user.dockets.push(newDocket);
+            User.findByIdAndUpdate(user._id)
+                .then(user => {
+                    res.json(user);
+                })
+                .catch(err => console.log(err));
         })
         .catch(err => console.log(err));
 });
