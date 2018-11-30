@@ -22,6 +22,7 @@ class Docket extends Component {
                         <Spacer h={1} />
                     </div>
                 ))}
+                <Spacer h={50} />
             </div>
         );
     }

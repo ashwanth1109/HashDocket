@@ -135,8 +135,9 @@ Router.put("/addDocket", (req, res) => {
                 items: [newDocketItem._id]
             };
             user.dockets.push(newDocket);
-            User.findByIdAndUpdate(user._id)
-                .then(user => {
+            User.findByIdAndUpdate(user._id, user)
+                .then(updatedUser => {
+                    console.log(user);
                     res.json(user);
                 })
                 .catch(err => console.log(err));

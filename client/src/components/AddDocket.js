@@ -28,6 +28,7 @@ const s = {
 class AddDocket extends Component {
     addDocket = () => {
         const { user } = this.props;
+        console.log(`add docket called`);
         fetch("/api/users/addDocket", {
             headers: {
                 //prettier-ignore
@@ -38,6 +39,7 @@ class AddDocket extends Component {
             body: JSON.stringify(user)
         })
             .then(res => {
+                console.log(res);
                 res.json()
                     .then(data => {
                         console.log(data);

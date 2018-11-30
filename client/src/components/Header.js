@@ -7,8 +7,8 @@ import arrowDown from "../assets/chevron-arrow-down.png";
 import { connect } from "react-redux";
 
 const s = {
-    headerContainer: "screenW height80 fixed",
-    header: "screenW height80 relative",
+    headerContainer: "screenW height80 ",
+    header: "screenW height80 fixed zIndex7",
     staticHeader: "fullW fullH black zIndex7 abs",
     dynamicHeader:
         "screenW height600 cream abs transition1 zIndex6 flex column",
@@ -17,11 +17,11 @@ const s = {
     container: "width1000 fullH mAuto flex flex1 row jBetween aCenter zIndex5",
     title: "fWhite fSize2 fWeight500",
     menuButtonOuter:
-        "width120 height120 abs darkGray bRad60 left0 right0 mAuto zIndex5 flex center transition1",
+        "width120 height120 abs darkGray bRad60 left0 right0 mAuto zIndex6 flex center transition1",
     menuButtonInner:
         "width100 height100 green bRad50 flex column jEnd aCenter hoverGreenLight cPointer transition05",
     arrowImage: "width50 height40 imgContain transition1",
-    bgOverlayDarken: "abs screenW screenH transition1Bg"
+    bgOverlayDarken: "abs screenW screenH transition1Bg fixed"
 };
 
 // const mapStateToProps = state => {
@@ -142,9 +142,9 @@ class Header extends Component {
         const arrowPosition = headerOpen ? "-575px" : "-55px";
         const arrowDirection = headerOpen ? "-180deg" : "0deg";
         const bgOverlayDarken = headerOpen ? " blackO40" : " blackO0";
-        const headerZIndex = headerZ ? "zIndex5" : "zIndex4";
+        const headerZIndex = headerZ ? "zIndex5" : "zIndexM3";
         return (
-            <div className={s.headerContainer + " " + headerZIndex}>
+            <div className={s.headerContainer}>
                 <div className={s.header}>
                     <div
                         className={s.menuButtonOuter}
@@ -186,7 +186,14 @@ class Header extends Component {
                     </div>
                 </div>
                 <div>
-                    <div className={s.bgOverlayDarken + bgOverlayDarken} />
+                    <div
+                        className={
+                            s.bgOverlayDarken +
+                            bgOverlayDarken +
+                            " " +
+                            headerZIndex
+                        }
+                    />
                 </div>
             </div>
         );

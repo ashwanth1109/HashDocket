@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 import plus from "../assets/plus-white.png";
+// import delete from '../assets/delete.png';
+import del from "../assets/delete.png";
+
 import Spacer from "./Spacer";
 
 import { connect } from "react-redux";
@@ -53,15 +56,42 @@ const mapDispatchToProps = dispatch => {
 const s = {
     container:
         "fullW height80 googleRed borderBox flex row aCenter jBetween relative transition1",
-    title: "flex1 fSize2 fWeight500 googleRed fWhite",
+    title: "flex1 fullH flex row aCenter fSize2 fWeight500 googleRed fWhite",
     addImage: "height40 imgContain transition05",
     addContainer:
-        "abs width80 height80 flex center right0 black hoverGreenD cPointer transition05"
+        "width80 height80 flex center right0 black hoverGreenD cPointer transition05"
 };
 
 class DocketHeader extends Component {
     addDocketItem = () => {
         console.log(`add docket item`);
+    };
+
+    removeDocket = () => {
+        console.log(`remove docket`);
+        const { user, docketId } = this.props;
+        user.dockets.splice(docketId, 1);
+        fetch(`/api/users/update`, {
+            headers: {
+                //prettier-ignore
+                "Accept": "application/json",
+                "Content-Type": "application/json"
+            },
+            method: "PUT",
+            body: JSON.stringify(user)
+        })
+            .then(res => {
+                res.json()
+                    .then(data => {
+                        console.log(data);
+                        //===========================================
+                        // UPDATE REDUX STATE HERE
+                        //===========================================
+                        this.props.updateUser(user);
+                    })
+                    .catch(err => console.log(err));
+            })
+            .catch(err => console.log(err));
     };
 
     updateDocketName = newName => {
@@ -116,7 +146,12 @@ class DocketHeader extends Component {
                 >
                     <img src={plus} alt="info bubble" className={s.addImage} />
                 </div>
-                <Spacer w={80} />
+                <div
+                    className={s.addContainer}
+                    onClick={() => this.removeDocket()}
+                >
+                    <img src={del} alt="info bubble" className={s.addImage} />
+                </div>
             </div>
         );
     }

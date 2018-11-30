@@ -5,8 +5,8 @@ import { connect } from "react-redux";
 import AddDocket from "../components/AddDocket";
 
 const s = {
-    container: "width1000 mAuto flex column zIndex4",
-    body: "fullW zIndex4"
+    container: "fullW abs",
+    body: "width1000 mAuto flex column"
 };
 
 // const mapStateToProps = state => {
@@ -28,7 +28,8 @@ const s = {
 const mapStateToProps = state => {
     console.log(state);
     return {
-        user: state.user
+        user: state.user,
+        headerZ: state.header.headerZ
     };
 };
 
@@ -47,7 +48,7 @@ class DashboardPage extends Component {
                         <Docket key={id} items={docket.items} docketId={id} />
                     ))}
                 </div>
-                <Spacer h={100} />
+                <Spacer h={30} />
                 <AddDocket />
             </div>
         );
