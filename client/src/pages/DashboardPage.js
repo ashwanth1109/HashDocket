@@ -40,7 +40,7 @@ class DashboardPage extends Component {
                             key={id}
                             title={docket.name}
                             items={docket.items}
-                            docketId={docket._id}
+                            docketId={id}
                         />
                     ))}
                 </div>

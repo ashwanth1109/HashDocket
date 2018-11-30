@@ -7,7 +7,19 @@ import TextOrInput from "./TextOrInput";
 
 const mapStateToProps = state => {
     return {
-        headerOpen: state.headerOpen
+        headerOpen: state.headerOpen,
+        user: state.user
+    };
+};
+
+const mapDispatchToProps = dispatch => {
+    return {
+        updateUser: function(user) {
+            dispatch({
+                type: "UPDATE_USER",
+                user: user
+            });
+        }
     };
 };
 
@@ -25,8 +37,38 @@ class DocketHeader extends Component {
         console.log(`add docket item`);
     };
 
-    updateDocketName = () => {
+    updateDocketName = newName => {
         console.log(`update docket name`);
+        // console.log(this.props.user);
+        const { user, docketId } = this.props;
+        console.log(newName);
+        console.log(docketId);
+        //===========================================
+        // UPDATE USER FROM DOCKET NAME REF
+        //===========================================
+        user.dockets[docketId].name = newName;
+        console.log(user);
+        fetch(`/api/users/update/${user._id}`, {
+            headers: {
+                //prettier-ignore
+                "Accept": "application/json",
+                "Content-Type": "application/json"
+            },
+            method: "PUT",
+            body: JSON.stringify(user)
+        })
+            .then(res => {
+                res.json()
+                    .then(updatedUser => {
+                        console.log(updatedUser);
+                        //===========================================
+                        // UPDATE REDUX STATE HERE
+                        //===========================================
+                        // this.props.updateUser();
+                    })
+                    .catch(err => console.log(err));
+            })
+            .catch(err => console.log(err));
     };
     render() {
         return (
@@ -34,7 +76,7 @@ class DocketHeader extends Component {
                 <Spacer w={20} />
                 <TextOrInput
                     styles={s.title}
-                    updateData={() => this.updateDocketName()}
+                    updateData={text => this.updateDocketName(text)}
                 >
                     {this.props.title}
                 </TextOrInput>
@@ -50,4 +92,7 @@ class DocketHeader extends Component {
     }
 }
 
-export default connect(mapStateToProps)(DocketHeader);
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(DocketHeader);

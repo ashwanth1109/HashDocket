@@ -16,7 +16,7 @@ class TextOrInput extends Component {
         // console.log(`toggle text and input`);
         // console.log(!this.state.textMode);
         if (!this.state.textMode) {
-            this.props.updateData();
+            this.props.updateData(this.refs.text.value);
         }
         this.setState({
             textMode: !this.state.textMode
@@ -38,6 +38,7 @@ class TextOrInput extends Component {
             return (
                 <input
                     type="text"
+                    ref="text"
                     className={s.container + " noOutline " + styles}
                     style={{ borderWidth: "0px" }}
                     autoFocus

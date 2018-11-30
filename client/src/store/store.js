@@ -16,6 +16,11 @@ let hashdocket = function(state = [], action) {
                 currentPage: action.currentPage
             };
         }
+        case "UPDATE_USER": {
+            return {
+                user: action.user
+            };
+        }
         default: {
             return state;
         }

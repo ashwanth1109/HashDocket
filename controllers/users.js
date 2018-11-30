@@ -96,4 +96,21 @@ Router.post("/login", (req, res) => {
     });
 });
 
+//===========================================
+// @route POST api/users/update/userId
+// @desc Update user data
+// @access PUBLIC
+//===========================================
+Router.put("/update/:userId", (req, res) => {
+    const { userId } = req.params;
+    // console.log(`User sent from body is`);
+    // console.log(req.body);
+    User.findByIdAndUpdate(userId, req.body)
+        .then(updatedUser => {
+            console.log(updatedUser);
+            res.json({ message: "User updated succesfully" });
+        })
+        .catch(err => console.log(err));
+});
+
 module.exports = Router;

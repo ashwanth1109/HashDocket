@@ -14,7 +14,7 @@ class Docket extends Component {
         console.log(docketId);
         return (
             <div>
-                <DocketHeader title={title} />
+                <DocketHeader title={title} docketId={docketId} />
                 <DocketTitles />
                 {items.map((item, id) => (
                     <div key={id}>
