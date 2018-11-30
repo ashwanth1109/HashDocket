@@ -19,26 +19,49 @@ const s = {
         "flex1 flex center fSize15 fWhite transition05 cPointer hoverFSize16"
 };
 
+// const mapStateToProps = state => {
+//     //
+//     // console.log(`entering map state to props`);
+//     // console.log(state.user);
+//     // return {
+//     //     user: state.user,
+//     //     headerOpen: state.headerOpen,
+//     //     currentPage: state.currentPage
+//     // };
+// };
+
+// const mapDispatchToProps = dispatch => {
+//     //
+//     // return {
+//     //     loginUser: function(user, headerOpen, currentPage) {
+//     //         dispatch({
+//     //             type: "LOGIN_USER",
+//     //             user: user,
+//     //             headerOpen: !headerOpen,
+//     //             currentPage: 1
+//     //         });
+//     //     }
+//     // };
+// };
+
 const mapStateToProps = state => {
-    //
-    // console.log(`entering map state to props`);
-    // console.log(state.user);
+    // console.log(state);
     return {
-        user: state.user,
-        headerOpen: state.headerOpen,
-        currentPage: state.currentPage
+        user: state.user
     };
 };
 
 const mapDispatchToProps = dispatch => {
-    //
     return {
-        loginUser: function(user, headerOpen, currentPage) {
+        loginUser: user => {
             dispatch({
-                type: "LOGIN_USER",
-                user: user,
-                headerOpen: !headerOpen,
-                currentPage: 1
+                type: "UPDATE_USER",
+                user: user
+            });
+            dispatch({
+                type: "TOGGLE_HEADER",
+                headerOpen: true,
+                headerZ: true
             });
         }
     };
@@ -111,11 +134,12 @@ class AuthForm extends Component {
                     res.json()
                         .then(data => {
                             console.log(`user has logged in`);
-                            this.props.loginUser(
-                                data.user,
-                                this.props.headerOpen,
-                                this.props.currentPage
-                            );
+                            // this.props.loginUser(
+                            //     data.user,
+                            //     this.props.headerOpen,
+                            //     this.props.currentPage
+                            // );
+                            this.props.loginUser(data.user);
                         })
                         .catch(err => {
                             console.log(err);
@@ -240,3 +264,5 @@ export default connect(
     mapStateToProps,
     mapDispatchToProps
 )(AuthForm);
+
+// export default AuthForm;

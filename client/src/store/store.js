@@ -1,36 +1,66 @@
-import { createStore } from "redux";
+import { createStore, combineReducers } from "redux";
 
-let hashdocket = function(state = [], action) {
+//===========================================
+// HEADER REDUCER
+//===========================================
+const header = (state = false, action) => {
     switch (action.type) {
-        case "TOGGLE_HEADER": {
-            console.log(`TOGGLE_HEADER`);
+        case "TOGGLE_HEADER":
             return {
-                user: action.user,
-                headerOpen: action.headerOpen,
-                currentPage: action.currentPage,
+                headerOpen: !action.headerOpen,
                 headerZ: action.headerZ
             };
-        }
-        case "LOGIN_USER": {
-            console.log(`LOGIN_USER`);
+        case "TOGGLE_HEADERZ":
             return {
-                user: action.user,
                 headerOpen: action.headerOpen,
-                currentPage: action.currentPage
+                headerZ: !action.headerZ
             };
-        }
-        case "UPDATE_USER": {
-            console.log(`UPDATE_USER`);
+        default:
             return {
-                user: action.user
+                headerOpen: state,
+                headerZ: state
             };
-        }
-        default: {
-            console.log(`DEFAULT`);
-            return state;
-        }
     }
 };
 
-let store = createStore(hashdocket);
-export default store;
+//===========================================
+// USER REDUCER
+//===========================================
+const user = (state = null, action) => {
+    switch (action.type) {
+        case "UPDATE_USER":
+            return action.user;
+        // case "GET_USER":
+        //     return action.users;
+        default:
+            return state;
+    }
+};
+
+export default createStore(combineReducers({ header, user }));
+
+// let hashdocket = function(state = [], action) {
+// switch (action.type) {
+// case "TOGGLE_HEADER": {
+//     console.log(`TOGGLE_HEADER`);
+//     return {
+//         user: action.user,
+//         headerOpen: action.headerOpen,
+//         currentPage: action.currentPage,
+//         headerZ: action.headerZ
+//     };
+// }
+// case "LOGIN_USER": {
+//     console.log(`LOGIN_USER`);
+//     return {
+//         user: action.user,
+//         headerOpen: action.headerOpen,
+//         currentPage: action.currentPage
+//     };
+// }
+//         default: {
+//             console.log(`DEFAULT`);
+//             return state;
+//         }
+//     }
+// };

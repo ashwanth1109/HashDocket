@@ -5,28 +5,47 @@ import Spacer from "./Spacer";
 import { connect } from "react-redux";
 import TextOrInput from "./TextOrInput";
 
+// const mapStateToProps = state => {
+//     // console.log(`map state to props`);
+//     // console.log(state);
+//     // return {
+//     //     user: state.user,
+//     //     currentPage: state.currentPage,
+//     //     headerOpen: false,
+//     //     headerZ: state.headerZ
+//     // };
+// };
+
+// const mapDispatchToProps = dispatch => {
+//     // return {
+//     //     updateUser: function(user, currentPage, headerOpen, headerZ) {
+//     //         console.log(`User: ${user}`);
+//     //         console.log(`Current Page: ${currentPage}`);
+//     //         console.log(`Header: ${headerOpen}`);
+//     //         dispatch({
+//     //             type: "UPDATE_USER",
+//     //             user: user,
+//     //             currentPage: currentPage,
+//     //             headerOpen: headerOpen,
+//     //             headerZ: headerZ
+//     //         });
+//     //     }
+//     // };
+// };
+
 const mapStateToProps = state => {
-    console.log(`map state to props`);
-    console.log(state);
     return {
-        user: state.user,
-        currentPage: state.currentPage,
-        headerOpen: state.headerOpen,
-        headerZ: state.headerZ
+        user: state.user
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
-        updateUser: function(user, currentPage, headerOpen, headerZ) {
+        updateUser: user =>
             dispatch({
                 type: "UPDATE_USER",
-                user: user,
-                currentPage: currentPage,
-                headerOpen: headerOpen,
-                headerZ: headerZ
-            });
-        }
+                user: user
+            })
     };
 };
 
@@ -47,7 +66,7 @@ class DocketHeader extends Component {
     updateDocketName = newName => {
         console.log(`update docket name`);
         // console.log(this.props.user);
-        const { user, docketId, currentPage, headerOpen, headerZ } = this.props;
+        const { user, docketId } = this.props;
         console.log(newName);
         console.log(docketId);
         //===========================================
@@ -71,12 +90,7 @@ class DocketHeader extends Component {
                         //===========================================
                         // UPDATE REDUX STATE HERE
                         //===========================================
-                        this.props.updateUser(
-                            user,
-                            currentPage,
-                            headerOpen,
-                            headerZ
-                        );
+                        this.props.updateUser(user);
                     })
                     .catch(err => console.log(err));
             })
@@ -111,3 +125,5 @@ export default connect(
     mapStateToProps,
     mapDispatchToProps
 )(DocketHeader);
+
+// export default DocketHeader;
