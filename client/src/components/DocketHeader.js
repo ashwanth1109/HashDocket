@@ -6,18 +6,25 @@ import { connect } from "react-redux";
 import TextOrInput from "./TextOrInput";
 
 const mapStateToProps = state => {
+    console.log(`map state to props`);
+    console.log(state);
     return {
+        user: state.user,
+        currentPage: state.currentPage,
         headerOpen: state.headerOpen,
-        user: state.user
+        headerZ: state.headerZ
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
-        updateUser: function(user) {
+        updateUser: function(user, currentPage, headerOpen, headerZ) {
             dispatch({
                 type: "UPDATE_USER",
-                user: user
+                user: user,
+                currentPage: currentPage,
+                headerOpen: headerOpen,
+                headerZ: headerZ
             });
         }
     };
@@ -40,7 +47,7 @@ class DocketHeader extends Component {
     updateDocketName = newName => {
         console.log(`update docket name`);
         // console.log(this.props.user);
-        const { user, docketId } = this.props;
+        const { user, docketId, currentPage, headerOpen, headerZ } = this.props;
         console.log(newName);
         console.log(docketId);
         //===========================================
@@ -48,7 +55,7 @@ class DocketHeader extends Component {
         //===========================================
         user.dockets[docketId].name = newName;
         console.log(user);
-        fetch(`/api/users/update/${user._id}`, {
+        fetch(`/api/users/update`, {
             headers: {
                 //prettier-ignore
                 "Accept": "application/json",
@@ -60,17 +67,25 @@ class DocketHeader extends Component {
             .then(res => {
                 res.json()
                     .then(updatedUser => {
-                        console.log(updatedUser);
+                        console.log(user);
                         //===========================================
                         // UPDATE REDUX STATE HERE
                         //===========================================
-                        // this.props.updateUser();
+                        this.props.updateUser(
+                            user,
+                            currentPage,
+                            headerOpen,
+                            headerZ
+                        );
                     })
                     .catch(err => console.log(err));
             })
             .catch(err => console.log(err));
     };
     render() {
+        console.log(`docket header rendered`);
+        const { user, docketId } = this.props;
+        console.log(user);
         return (
             <div className={s.container}>
                 <Spacer w={20} />
@@ -78,7 +93,7 @@ class DocketHeader extends Component {
                     styles={s.title}
                     updateData={text => this.updateDocketName(text)}
                 >
-                    {this.props.title}
+                    {user.dockets[docketId].name}
                 </TextOrInput>
                 <div
                     className={s.addContainer}

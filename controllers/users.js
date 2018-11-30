@@ -101,11 +101,8 @@ Router.post("/login", (req, res) => {
 // @desc Update user data
 // @access PUBLIC
 //===========================================
-Router.put("/update/:userId", (req, res) => {
-    const { userId } = req.params;
-    // console.log(`User sent from body is`);
-    // console.log(req.body);
-    User.findByIdAndUpdate(userId, req.body)
+Router.put("/update", (req, res) => {
+    User.findByIdAndUpdate(req.body._id, req.body)
         .then(updatedUser => {
             console.log(updatedUser);
             res.json({ message: "User updated succesfully" });

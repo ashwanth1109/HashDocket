@@ -9,8 +9,8 @@ const s = {
 };
 
 const mapStateToProps = state => {
-    //
-    // console.log(state.user);
+    console.log(`in map state to props on dashboard`);
+    console.log(state.user);
     if (state.user) {
         return {
             currentPage: state.currentPage,
@@ -19,14 +19,13 @@ const mapStateToProps = state => {
     } else {
         return {
             currentPage: 0, // change to 0 for protected routes
-            user: state.user
+            user: null
         };
     }
 };
 
 class DashboardPage extends Component {
     render() {
-        console.log(this.props);
         if (this.props.currentPage === 0) {
             this.props.history.push("/");
         }
@@ -36,12 +35,7 @@ class DashboardPage extends Component {
                 <Spacer h={150} />
                 <div className={s.body}>
                     {dockets.map((docket, id) => (
-                        <Docket
-                            key={id}
-                            title={docket.name}
-                            items={docket.items}
-                            docketId={id}
-                        />
+                        <Docket key={id} items={docket.items} docketId={id} />
                     ))}
                 </div>
             </div>

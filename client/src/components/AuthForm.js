@@ -37,7 +37,7 @@ const mapDispatchToProps = dispatch => {
             dispatch({
                 type: "LOGIN_USER",
                 user: user,
-                headerOpen: false,
+                headerOpen: !headerOpen,
                 currentPage: 1
             });
         }
