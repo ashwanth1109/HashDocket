@@ -5,15 +5,10 @@ import { createStore, combineReducers } from "redux";
 //===========================================
 const header = (state = false, action) => {
     switch (action.type) {
-        case "TOGGLE_HEADER":
+        case "SET_HEADER":
             return {
                 headerOpen: !action.headerOpen,
                 headerZ: action.headerZ
-            };
-        case "TOGGLE_HEADERZ":
-            return {
-                headerOpen: action.headerOpen,
-                headerZ: !action.headerZ
             };
         default:
             return {

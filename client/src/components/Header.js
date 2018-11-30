@@ -78,20 +78,33 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         toggleHeader: (headerOpen, headerZ) => {
+            console.log(headerOpen);
             dispatch({
-                type: "TOGGLE_HEADER",
+                type: "SET_HEADER",
                 headerOpen: headerOpen,
-                headerZ: headerZ
+                headerZ: true
             });
             if (headerOpen) {
                 setTimeout(() => {
                     dispatch({
-                        type: "TOGGLE_HEADERZ",
-                        headerOpen: !headerOpen,
-                        headerZ: headerZ
+                        type: "SET_HEADER",
+                        headerOpen: headerOpen,
+                        headerZ: false
                     });
                 }, 1000);
             }
+            // if (!headerOpen) {
+            //
+            // } else {
+            //     dispatch({
+            //         type: "TOGGLE_HEADER",
+            //         headerOpen: headerOpen,
+            //         headerZ: !headerZ
+            //     });
+            //     setTimeout(() => {
+            //
+            //     }, 1000);
+            // }
         }
     };
 };

@@ -59,10 +59,17 @@ const mapDispatchToProps = dispatch => {
                 user: user
             });
             dispatch({
-                type: "TOGGLE_HEADER",
+                type: "SET_HEADER",
                 headerOpen: true,
                 headerZ: true
             });
+            setTimeout(() => {
+                dispatch({
+                    type: "SET_HEADER",
+                    headerOpen: true,
+                    headerZ: false
+                });
+            }, 1000);
         }
     };
 };
