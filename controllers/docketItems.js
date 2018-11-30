@@ -36,4 +36,15 @@ Router.post("/new", (req, res) => {
         .catch(err => console.log(err));
 });
 
+//===========================================
+// @route GET api/docket/:docketId
+// @desc Get a docket
+// @access PUBLIC
+//===========================================
+// Router.get('/:docketId', (req,res)=>{
+//     const {docketId} = req.params
+//     console.log(docketId);
+//     DocketItem.findById(id)
+// })
+
 module.exports = Router;

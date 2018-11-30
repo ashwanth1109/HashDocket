@@ -15,6 +15,9 @@ const s = {
 
 class DocketItem extends Component {
     render() {
+        const { docketId, itemData } = this.props;
+        console.log(docketId);
+        console.log(itemData);
         return (
             <div className={s.container}>
                 <div className={s.leftBorder} />

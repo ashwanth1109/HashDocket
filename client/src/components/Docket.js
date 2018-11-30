@@ -11,14 +11,14 @@ import Spacer from "./Spacer";
 class Docket extends Component {
     render() {
         const { items, docketId } = this.props;
-        console.log(docketId);
+        // console.log(docketId);
         return (
             <div>
                 <DocketHeader docketId={docketId} />
                 <DocketTitles />
                 {items.map((item, id) => (
                     <div key={id}>
-                        <DocketItem />
+                        <DocketItem docketId={docketId} itemData={item} />
                         <Spacer h={1} />
                     </div>
                 ))}

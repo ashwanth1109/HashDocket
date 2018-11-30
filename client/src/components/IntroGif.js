@@ -5,7 +5,7 @@ import Spacer from "./Spacer";
 const s = {
     container: "screenW screenH",
     blackOverlay:
-        "screenW screenH blackO40 abs fGreen fSize5 flex column jEnd aCenter fWeight700"
+        "screenW screenH blackO40 abs fGreen fSize4vw flex column jEnd aCenter fWeight700"
 };
 
 class IntroGif extends Component {

@@ -519,3 +519,8 @@
 .rotate180 {
     transform: rotate(180deg);
 }
+
+/*====== RESPONSIVE ======*/
+.fSize4vw {
+    font-size: 4vw;
+}

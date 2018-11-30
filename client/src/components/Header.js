@@ -14,14 +14,16 @@ const s = {
         "screenW height600 cream abs transition1 zIndex6 flex column",
     dynamicHeaderBody: "flex1 zIndex5",
     dynamicHeaderBorder: "fullW height10 darkGray zIndex5",
-    container: "width1000 fullH mAuto flex flex1 row jBetween aCenter zIndex5",
+    container: "width1000 fullH mAuto flex flex1 row aCenter zIndex5",
     title: "fWhite fSize2 fWeight500",
     menuButtonOuter:
         "width120 height120 abs darkGray bRad60 left0 right0 mAuto zIndex6 flex center transition1",
     menuButtonInner:
         "width100 height100 green bRad50 flex column jEnd aCenter hoverGreenLight cPointer transition05",
     arrowImage: "width50 height40 imgContain transition1",
-    bgOverlayDarken: "abs screenW screenH transition1Bg fixed"
+    bgOverlayDarken: "abs screenW screenH transition1Bg fixed",
+    div1: "transition1 flex row aCenter",
+    div2: "transition1"
 };
 
 // const mapStateToProps = state => {
@@ -71,7 +73,8 @@ const mapStateToProps = state => {
     // console.log(state);
     return {
         headerOpen: state.header.headerOpen,
-        headerZ: state.header.headerZ
+        headerZ: state.header.headerZ,
+        user: state.user
     };
 };
 
@@ -137,12 +140,14 @@ class Header extends Component {
         // const { headerOpen, headerZ } = this.props;
         // console.log(headerZ);
         // console.log(headerOpen);
-        const { headerOpen, headerZ } = this.props;
+        const { headerOpen, headerZ, user } = this.props;
         const headerPosition = headerOpen ? "-520px" : "0px";
         const arrowPosition = headerOpen ? "-575px" : "-55px";
         const arrowDirection = headerOpen ? "-180deg" : "0deg";
         const bgOverlayDarken = headerOpen ? " blackO40" : " blackO0";
         const headerZIndex = headerZ ? "zIndex5" : "zIndexM3";
+        const div1 = user ? "flex1" : "";
+        const div2 = user ? "" : "flex1";
         return (
             <div className={s.headerContainer}>
                 <div className={s.header}>
@@ -167,7 +172,10 @@ class Header extends Component {
                     </div>
                     <div className={s.staticHeader}>
                         <div className={s.container}>
+                            <div className={s.div1 + " " + div1}>{}</div>
                             <Logo />
+                            <div className={s.div2 + " " + div2} />
+                            <Spacer w={20} />
                             <div className={s.title}>
                                 {this.props.user
                                     ? this.getUsername()
