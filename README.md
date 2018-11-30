@@ -1,3 +1,3 @@
 # HashDocket
 
-Link to the App - https://hashdocket.herokuapp.com/dashboard
+Link to the App - https://hashdocket.herokuapp.com/
