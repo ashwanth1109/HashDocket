@@ -27,6 +27,7 @@ const user = (state = null, action) => {
             // REDUX DOESNT DETECT IT
             //===========================================
             return Object.assign({}, action.user);
+        // return action.user
         // case "UPDATE":
         //     return action.users;
         default:
